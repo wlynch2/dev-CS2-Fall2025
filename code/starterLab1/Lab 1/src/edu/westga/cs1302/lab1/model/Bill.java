@@ -11,7 +11,7 @@ public class Bill {
 	private ArrayList<BillItem> items;
 	public static final double TAX = 0.1;
 	public static final double TIP = 0.2;
-	public static final double SUBTOTAL = 0.0;
+	
 	
 	/** Create a new empty Bill
 	 * 
@@ -46,7 +46,7 @@ public class Bill {
 	 */
 	public String getText() {
 		String text = "ITEMS" + System.lineSeparator();
-		double subTotal = SUBTOTAL;
+		double subTotal = 0.0;
 		for (BillItem item : this.items) {
 			text += item.getName() + " - " + item.getAmount() + System.lineSeparator();
 			subTotal += item.getAmount();
