@@ -21,10 +21,21 @@ class TestAddItem {
 	void testWhenOneItemIsAdded() {
 		Bill bill = new Bill();
 		
-		BillItem billItem = new BillItem("Hello", 0);
+		BillItem billItem = new BillItem("Hello", 3);
 		bill.addItem(billItem);
 		
 		assertEquals(1, bill.getItems().size(), "test the length of the list");
+	};
+	
+	@Test
+	void testWhenMulitiplesItemsAreAdded() {
+		Bill bill = new Bill();
+		BillItem billItem = new BillItem("HEY", 2);
+		BillItem billItem2 = new BillItem("PROFESSOR", 3);
+		bill.addItem(billItem);
+		bill.addItem(billItem2);
+		
+		assertEquals(2, bill.getItems().size(), "Test if it runs with multiple items in list");
 	}
 	
 	
