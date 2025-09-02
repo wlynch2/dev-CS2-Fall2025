@@ -16,6 +16,8 @@ public class BillView {
 	 * @postcondition none
 	 * 
 	 * @return a String containing the list of bill items and total for the bill
+	 * 
+	 * @param bill of the bill item
 	 */
 	public String getText(Bill bill) {
 		String text = "ITEMS" + System.lineSeparator();
