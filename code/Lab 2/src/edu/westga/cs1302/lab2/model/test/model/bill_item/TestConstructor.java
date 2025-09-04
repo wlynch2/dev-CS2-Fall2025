@@ -10,22 +10,23 @@ class TestConstructor {
 
 	@Test
 	void testWhenNameIsNull() {
+		
 		assertThrows(IllegalArgumentException.class, () ->{
-			BillItem bill = new BillItem(null, 5);
+			 new BillItem(null, 5);
 		});
 	}
 	
 	@Test
 	void testWhenItemIs0() {
 		assertThrows(IllegalArgumentException.class, () ->{
-			BillItem bill = new BillItem("hello", 0);
+			new BillItem("hello", 0);
 		});
 	}
 	
 	@Test
 	void testAtOneBelowBoundary() {
 		assertThrows(IllegalArgumentException.class, () ->{
-			BillItem bill = new BillItem("HELLO", -1);
+			new BillItem("HELLO", -1);
 		});
 	}
 	
