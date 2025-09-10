@@ -11,7 +11,8 @@ public class Bill {
 	public static final double TIP_RATE = 0.2;
 	public static final double TAX_RATE = 0.1;
 	
-	private ArrayList<BillItem> items;
+	private BillItem[] items;
+	private int size;
 	
 	/** Create a new empty Bill
 	 * 
@@ -20,7 +21,8 @@ public class Bill {
 	 * 
 	 */
 	public Bill() {
-		this.items = new ArrayList<BillItem>();
+		this.items = new BillItem[5];
+		this.size = 0;
 	}
 	
 	/** Adds the item to the bill
@@ -29,12 +31,32 @@ public class Bill {
 	 * @postcondition item is added to the list of items in the bill
 	 * 
 	 * @param item the item to be added to the bill
+	 * 
+	 * @throws IndexOutOfBoundsException if adding new item when array is full
 	 */
-	public void addItem(BillItem item) {
+	public void addItem(BillItem item) throws IndexOutOfBoundsException {
 		if (item == null) {
 			throw new IllegalArgumentException("item must not be null.");
 		}
-		this.items.add(item);
+		this.items[this.size] = item;
+		this.size++;
+		
+		try {
+			this.items[this.size] = item;
+			this.size++;
+		} catch (IndexOutOfBoundsException error) {
+			BillItem[] newItems = new BillItem[this.size*2];
+			int newSize = 0;
+			for (BillItem currItem : this.items) {
+				newItems[newSize] = currItem;
+				newSize++;
+			}
+			newItems[newSize] = item;
+			newSize++;
+			this.items = newItems;
+			this.size = newSize;
+					
+		}
 	}
 
 	/** Returns the list of items in the bill
@@ -44,7 +66,7 @@ public class Bill {
 	 * 
 	 * @return the list of items in the bill
 	 */
-	public ArrayList<BillItem> getItems() {
+	public BillItem[] getItems() {
 		return this.items;
 	}
 
