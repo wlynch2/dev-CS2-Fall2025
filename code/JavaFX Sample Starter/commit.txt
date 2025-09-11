@@ -1,0 +1,95 @@
+commit dafd0c2ec03c26044da1c73c4fd9552992386117
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 18:31:25 2025 -0400
+
+    added instance variables to consistently add items to BillView
+    
+    Instead of using the initialize method i figured i would be able to simply
+    declare instance variables at the top of the class and add the items to
+    BillView in which it will hold onto all the values of the billItem
+    
+    I also fixed all the checkstyle warnings
+
+commit 087bc50a93db1317ffdd67b9ea3ca59fede099c3
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 12:45:20 2025 -0400
+
+    Making sure it works with prof
+
+commit a7d1b06cd1e3a5e74766feffb44f61d253e3134d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 10:33:52 2025 -0400
+
+    Set up the project
+    renamed the project lab3
+    added bill classes into lab 3
+
+commit e4995aeb0277da444fef83f644c5ca6408fefbd5
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 00:15:17 2025 -0400
+
+    wrote the test methods for TestGetText.java
+    fixed some checkstyle errors in TestConstructor.java
+    fixed formatting to make more presentible
+
+commit 350f57ee0d952f6fdc90d84a30a78de80008a065
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 2 11:38:24 2025 -0400
+
+    fixed checstyle erros in bill.java, billItems.java, and BillView.java
+    started work on the first test method for BillView.java
+
+commit f67fbd344dea3e8ece56d4e154b8548b46a2e270
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 21:21:21 2025 -0400
+
+    Finshed test methods for TestAddItem class
+    Finished test methods for TestConstructor.java class
+
+commit 9290e1f51951c261c4ce776d1728d04c90f3df81
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:50:05 2025 -0400
+
+    created multiple test packages and test classes
+    added a test method for the add item method
+
+commit 23f0e212fa58097ca537b7a2b02eecda17f00448
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:02:53 2025 -0400
+
+    adding the project to my repository
+
+commit 84c85b9131dad2a9ce6e73ed2c1eab768fff9202
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Aug 27 17:42:32 2025 -0400
+
+    moved getText() logic to billView
+    got rid of magic numbers and switched them with constants
+
+commit a13070b5dc6acc0097bcebe259760ffc28344504
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 12:31:51 2025 -0400
+
+    Lab 1 cs1302 f25
+
+commit 150ef53e3bf7c36af7b28528deadcffb086991bb
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:38:17 2025 -0400
+
+    project in
+
+commit 3717b49af2b0fb45f7336f54945267fc8e1629d4
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:01:20 2025 -0400
+
+    Creating message for read me
+    
+    1) didnt get the message
+    2)dindt get the message
+    3) didnt get the message (/README/)
+
+commit 4079d48cb23c01d5c5b26af0e449303c3b3e34a1
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Aug 19 10:04:38 2025 -0400
+
+    Initial commit
