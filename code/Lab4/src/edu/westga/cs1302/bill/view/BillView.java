@@ -1,6 +1,7 @@
 package edu.westga.cs1302.bill.view;
 
 import edu.westga.cs1302.bill.model.Bill;
+import edu.westga.cs1302.bill.model.BillCalculations;
 import edu.westga.cs1302.bill.model.BillItem;
 
 /** Supports displaying the information contained in a Bill.
@@ -29,8 +30,8 @@ public class BillView {
 		
 		text += System.lineSeparator();
 		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
-		double tax = subTotal * Bill.TAX_RATE;
-		double tip = subTotal * Bill.TIP_RATE;
+		double tax = Bill.TAX_RATE;
+		double tip = Bill.TIP_RATE;
 		text += "TAX - $" + BillView.roundToNearestHundredth(tax) + System.lineSeparator();
 		text += "TIP - $" + BillView.roundToNearestHundredth(tip) + System.lineSeparator();
 		text += "TOTAL - $" + BillView.roundToNearestHundredth(subTotal + tip + tax);
