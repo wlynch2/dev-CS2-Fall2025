@@ -16,9 +16,8 @@ public class TestBillCalculationsConstructor {
 	@Test
 	void testCalculations() {
 		BillItem item = new BillItem("hello", 5);
-		BillItem[] list = new BillItem[5];
+		BillItem[] list = new BillItem[1];
 		list[0] = item;
-		BillCalculations.billCalculations(list);
-		assertEquals(6, 6);
+		assertEquals(5.0, BillCalculations.billCalculations(list));
 	}
 }

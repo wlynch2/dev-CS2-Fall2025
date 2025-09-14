@@ -24,6 +24,9 @@ public class BillView {
 		String text = "ITEMS" + System.lineSeparator();
 		BillItem[] items = new BillItem[5];
 		double subTotal = BillCalculations.billCalculations(items);
+		double tip = BillCalculations.tipAmount(items);
+		double tax = BillCalculations.taxAmount(items);
+		double finalTotal = BillCalculations.total(items);
 		for (BillItem item : bill.getItems()) {
 			text += item.getName() + " - " + item.getAmount() + System.lineSeparator();
 			subTotal += item.getAmount();
@@ -31,11 +34,9 @@ public class BillView {
 		
 		text += System.lineSeparator();
 		text += "SUBTOTAL - $" + subTotal + System.lineSeparator();
-		double tax = Bill.TAX_RATE;
-		double tip = Bill.TIP_RATE;
 		text += "TAX - $" + BillView.roundToNearestHundredth(tax) + System.lineSeparator();
 		text += "TIP - $" + BillView.roundToNearestHundredth(tip) + System.lineSeparator();
-		text += "TOTAL - $" + BillView.roundToNearestHundredth(BillCalculations.billCalculations(items));
+		text += "TOTAL - $" + BillView.roundToNearestHundredth(finalTotal);
 		return text;
 	}
 	
