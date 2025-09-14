@@ -13,6 +13,10 @@ public class BillCalculations {
 	 * @return double the subtotal of everything
 	 */
 	public static double billCalculations(BillItem[] items) {
+		if (items == null) {
+			throw new IllegalArgumentException("items cannot be null");
+		}
+		
 		double subtotal = 0.0;
 		double tax = Bill.TAX_RATE;
 		double tip = Bill.TIP_RATE;
