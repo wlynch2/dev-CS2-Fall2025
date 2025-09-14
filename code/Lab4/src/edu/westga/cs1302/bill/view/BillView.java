@@ -36,8 +36,6 @@ public class BillView {
 		text += "TAX - $" + BillView.roundToNearestHundredth(tax) + System.lineSeparator();
 		text += "TIP - $" + BillView.roundToNearestHundredth(tip) + System.lineSeparator();
 		text += "TOTAL - $" + BillView.roundToNearestHundredth(BillCalculations.billCalculations(items));
-		
-		
 		return text;
 	}
 	
