@@ -17,14 +17,20 @@ import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
  */
 public class MainWindow {
 	
-	 @FXML
+	 	@FXML
 	    private TextArea description;
+	 	
+	    @FXML
+	    private TextArea descriptionOutput;
 
 	    @FXML
 	    private ListView<String> list;
 
 	    @FXML
 	    private TextField task;
+	    
+	    @FXML
+	    private TextField taskPriority;
 
 	    @FXML
 	    private ComboBox<String> selector;
@@ -46,12 +52,9 @@ public class MainWindow {
     	
     	DataClass data = new DataClass(task, description, priority);
     	
-    	this.list.getItems().add(data.getTask() + " - " +
-    	data.getDescription() + data.getPriority());
-    	
-    	
-    	
- 
+    	this.list.getItems().add(data.getTask());
+    	this.descriptionOutput.setText(data.getDescription());
+    	this.taskPriority.setText(data.getPriority());
     }
 
     @FXML
@@ -71,6 +74,5 @@ public class MainWindow {
     	DataClass data = new DataClass("", description, "");
     	return data.getDescription();
     }
-    
 
 }

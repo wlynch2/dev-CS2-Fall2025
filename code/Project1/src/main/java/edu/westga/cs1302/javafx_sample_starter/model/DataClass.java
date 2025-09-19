@@ -7,6 +7,16 @@ public class DataClass {
 	public final String  priority;
 	
 	public DataClass(String task, String description, String priority) {
+		if (task == null) {
+			throw new IllegalArgumentException("task cannot be null");
+		}
+		if (description == null) {
+			throw new IllegalArgumentException("descriptino cannot be null");
+		}
+		if (priority == null) {
+			throw new IllegalArgumentException("priority cannot be null");
+		}
+		
 		this.task = task;
 		this.description = description;
 		this.priority = priority;
