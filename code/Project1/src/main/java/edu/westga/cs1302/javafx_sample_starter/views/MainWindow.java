@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -33,19 +34,43 @@ public class MainWindow {
      * Perform any needed initialization of UI components and underlying objects.
      */
     public void initialize() {
-    	
+    	selector.getItems().addAll("High", "Med", "low");
     }
     
     @FXML
     void addName(ActionEvent event) {
-    	this.list.getItems().add(this.task.getText());
-    	this.selector.getItems().add(this.task.getText());
+    	String task = this.getDataClassName();
+    	String description = this.getDataClassDescription();
+    	String priority = selector.getValue();
+    	
+    	
+    	DataClass data = new DataClass(task, description, priority);
+    	
+    	this.list.getItems().add(data.getTask() + " - " +
+    	data.getDescription() + data.getPriority());
+    	
+    	
+    	
+ 
     }
 
     @FXML
     void popUp(ActionEvent event) {
-    	Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    	alert.setContentText(this.selector.getValue());
-    	alert.showAndWait();
+  
     }
+    
+    
+    public String getDataClassName() {
+    	String task = this.task.getText();
+    	DataClass data = new DataClass(task, "", "");
+    	return data.getTask();
+    }
+    
+    public String getDataClassDescription() {
+    	String description = this.description.getText();
+    	DataClass data = new DataClass("", description, "");
+    	return data.getDescription();
+    }
+    
+
 }
