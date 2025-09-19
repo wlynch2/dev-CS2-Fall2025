@@ -23,7 +23,7 @@ public class MainWindow {
 	    private ListView<String> list;
 
 	    @FXML
-	    private TextField name;
+	    private TextField task;
 
 	    @FXML
 	    private ComboBox<String> selector;
@@ -38,8 +38,8 @@ public class MainWindow {
     
     @FXML
     void addName(ActionEvent event) {
-    	this.list.getItems().add(this.name.getText());
-    	this.selector.getItems().add(this.name.getText());
+    	this.list.getItems().add(this.task.getText());
+    	this.selector.getItems().add(this.task.getText());
     }
 
     @FXML
