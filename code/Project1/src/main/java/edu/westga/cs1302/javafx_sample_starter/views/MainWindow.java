@@ -7,7 +7,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
 import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
+import edu.westga.cs1302.javafx_sample_starter.model.DataClassList;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -34,6 +37,8 @@ public class MainWindow {
 
 	    @FXML
 	    private ComboBox<String> selector;
+	    
+	    private DataClassList taskList = new DataClassList();
 
     
     /**
@@ -45,23 +50,35 @@ public class MainWindow {
     
     @FXML
     void addName(ActionEvent event) {
-    	String task = this.getDataClassName();
-    	String description = this.getDataClassDescription();
-    	String priority = selector.getValue();
-    	
-    	
-    	DataClass data = new DataClass(task, description, priority);
-    	
-    	this.list.getItems().add(data.getTask());
-    	this.descriptionOutput.setText(data.getDescription());
-    	this.taskPriority.setText(data.getPriority());
+    	addTask();
+    }
+    
+    @FXML
+    void changeDescription(ActionEvent event) {
+    	this.updateDescription();
     }
 
     @FXML
     void popUp(ActionEvent event) {
   
     }
+    @FXML
+    void changeTask(MouseEvent event) {
+
+    }
     
+    public void addTask() {
+    	String task = this.getDataClassName();
+    	String description = this.getDataClassDescription();
+    	String priority = selector.getValue();
+    	
+    	DataClass data = new DataClass(task, description, priority);
+    	this.taskList.addItem(data);
+    	
+    	this.list.getItems().add(data.getTask());
+    	this.descriptionOutput.setText(data.getDescription());
+    	this.taskPriority.setText(data.getPriority());
+    }
     
     public String getDataClassName() {
     	String task = this.task.getText();
@@ -73,6 +90,17 @@ public class MainWindow {
     	String description = this.description.getText();
     	DataClass data = new DataClass("", description, "");
     	return data.getDescription();
+    }
+    
+    public void updateDescription() {
+    	this.descriptionOutput.clear();
+    	String description = this.getDataClassDescription();
+    	DataClass data = new DataClass(this.getDataClassName(), description, this.selector.getValue());
+    	this.descriptionOutput.setText(data.getDescription());
+    }
+    
+    public void swapTask() {
+    	
     }
 
 }
