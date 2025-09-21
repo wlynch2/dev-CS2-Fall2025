@@ -23,15 +23,24 @@ public class DataClass {
 	}
 	
 	public String getTask() {
-		return task.toString();
+		return task;
 	}
 	
 	public String getDescription() {
-		return description.toString();
+		return description;
 	}
 	
 	public String getPriority() {
-		return priority.toString();
+		return priority;
 	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String toString() {
+		return task;
+	}
+
 }
 

@@ -24,5 +24,6 @@
       <Label layoutX="298.0" layoutY="382.0" text="Description of Task" />
       <Label layoutX="298.0" layoutY="326.0" text="Task Priority" />
       <Button layoutX="353.0" layoutY="237.0" mnemonicParsing="false" onAction="#changeDescription" text="Update Description" />
+      <Button layoutX="46.0" layoutY="545.0" mnemonicParsing="false" onAction="#removeTask" text="RemoveTask" />
    </children>
 </AnchorPane>

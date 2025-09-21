@@ -8,7 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
+import javafx.scene.layout.Priority;
 import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
 import edu.westga.cs1302.javafx_sample_starter.model.DataClassList;
 
@@ -19,7 +19,7 @@ import edu.westga.cs1302.javafx_sample_starter.model.DataClassList;
  * @version Fall 2025
  */
 public class MainWindow {
-	
+		
 	 	@FXML
 	    private TextArea description;
 	 	
@@ -27,7 +27,7 @@ public class MainWindow {
 	    private TextArea descriptionOutput;
 
 	    @FXML
-	    private ListView<String> list;
+	    private ListView<DataClass> list;
 
 	    @FXML
 	    private TextField task;
@@ -38,7 +38,9 @@ public class MainWindow {
 	    @FXML
 	    private ComboBox<String> selector;
 	    
-	    private DataClassList taskList = new DataClassList();
+	    
+	    
+	    
 
     
     /**
@@ -50,12 +52,25 @@ public class MainWindow {
     
     @FXML
     void addName(ActionEvent event) {
-    	addTask();
+    	String task = this.getDataClassName();
+    	String description = this.getDataClassDescription();
+    	String priority = selector.getValue();
+    	
+    	DataClass data = new DataClass(task, description, priority);
+    	
+    	
+    	
+    	this.list.getItems().add(data);
+    	this.descriptionOutput.setText(data.getDescription());
+    	this.taskPriority.setText(data.getPriority());
     }
     
     @FXML
     void changeDescription(ActionEvent event) {
-    	this.updateDescription();
+    	this.descriptionOutput.clear();
+    	String description = this.getDataClassDescription();
+    	DataClass data = new DataClass(this.getDataClassName(), description, this.selector.getValue());
+    	this.descriptionOutput.setText(data.getDescription());
     }
 
     @FXML
@@ -64,21 +79,25 @@ public class MainWindow {
     }
     @FXML
     void changeTask(MouseEvent event) {
-
+    	DataClass item = list.getSelectionModel().getSelectedItem();
+    	String prevDescription = item.getDescription();
+    	
+    	String prevPriority = item.getPriority();
+ 
+    	if (item != null) {
+    		this.descriptionOutput.setText(prevDescription);
+    		this.taskPriority.setText(prevPriority); 
+    		
+    		
+    		
+    	}
+    	
     }
     
-    public void addTask() {
-    	String task = this.getDataClassName();
-    	String description = this.getDataClassDescription();
-    	String priority = selector.getValue();
-    	
-    	DataClass data = new DataClass(task, description, priority);
-    	this.taskList.addItem(data);
-    	
-    	this.list.getItems().add(data.getTask());
-    	this.descriptionOutput.setText(data.getDescription());
-    	this.taskPriority.setText(data.getPriority());
-    }
+    @FXML
+    void removeTask(ActionEvent event) {
+    
+    	}
     
     public String getDataClassName() {
     	String task = this.task.getText();
@@ -91,16 +110,9 @@ public class MainWindow {
     	DataClass data = new DataClass("", description, "");
     	return data.getDescription();
     }
+
     
-    public void updateDescription() {
-    	this.descriptionOutput.clear();
-    	String description = this.getDataClassDescription();
-    	DataClass data = new DataClass(this.getDataClassName(), description, this.selector.getValue());
-    	this.descriptionOutput.setText(data.getDescription());
-    }
-    
-    public void swapTask() {
     	
-    }
+    
 
 }

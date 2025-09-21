@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
 
 public class DataClassList {
-	private ArrayList<DataClass> items;
+	private static ArrayList<DataClass> items;
 	
 	public DataClassList () {
 		this.items = new ArrayList<DataClass>();
@@ -22,7 +22,7 @@ public class DataClassList {
 		if (item == null) {
 			throw new IllegalArgumentException("item must not be null.");
 		}
-		this.items.add(item);
+		items.add(item);
 	}
 
 	/** Returns the list of items in the bill
