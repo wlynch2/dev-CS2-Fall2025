@@ -56,21 +56,37 @@ public class MainWindow {
     	String description = this.getDataClassDescription();
     	String priority = selector.getValue();
     	
-    	DataClass data = new DataClass(task, description, priority);
+    	try {
+        	DataClass data = new DataClass(task, description, priority);
+        	this.taskPriority.setText(data.getPriority());
+        	
+        	this.list.getItems().add(data);
+            this.descriptionOutput.setText(data.getDescription());
+            this.taskPriority.setText(data.getPriority());
+    	} 
+    	catch (IllegalArgumentException e) {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+    		alert.setContentText(e.getMessage());
+    		alert.showAndWait();
+    	}
+    	
+
+    	
+    
     	
     	
-    	
-    	this.list.getItems().add(data);
-    	this.descriptionOutput.setText(data.getDescription());
-    	this.taskPriority.setText(data.getPriority());
     }
     
     @FXML
     void changeDescription(ActionEvent event) {
     	this.descriptionOutput.clear();
+    	
     	String description = this.getDataClassDescription();
-    	DataClass data = new DataClass(this.getDataClassName(), description, this.selector.getValue());
-    	this.descriptionOutput.setText(data.getDescription());
+    	DataClass item = list.getSelectionModel().getSelectedItem();
+    	if (item != null) {
+    		DataClass data = new DataClass(this.getDataClassName(), description, this.selector.getValue());
+    		this.descriptionOutput.setText(data.getDescription());
+    	}
     }
 
     @FXML
@@ -79,19 +95,23 @@ public class MainWindow {
     }
     @FXML
     void changeTask(MouseEvent event) {
-    	DataClass item = list.getSelectionModel().getSelectedItem();
-    	String prevDescription = item.getDescription();
-    	
-    	String prevPriority = item.getPriority();
- 
-    	if (item != null) {
-    		this.descriptionOutput.setText(prevDescription);
-    		this.taskPriority.setText(prevPriority); 
     		
-    		
-    		
-    	}
-    	
+    		try {
+    			DataClass item = list.getSelectionModel().getSelectedItem();
+    			
+    			String prevDescription = item.getDescription();
+    	    	
+    			String prevPriority = item.getPriority();
+    			if (item != null) {
+    				this.descriptionOutput.setText(prevDescription);
+    				this.taskPriority.setText(prevPriority); 
+    			}
+    		}
+    		catch(NullPointerException n) {
+        		Alert alert = new Alert(Alert.AlertType.ERROR);
+        		alert.setContentText(n.getMessage());
+        		alert.showAndWait();
+    		}
     }
     
     @FXML
