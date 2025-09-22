@@ -96,8 +96,13 @@ public class MainWindow {
     
     @FXML
     void removeTask(ActionEvent event) {
-    
+    	DataClass item = list.getSelectionModel().getSelectedItem();
+    	if (item != null) {
+    		list.getItems().remove(item);
+    		this.descriptionOutput.clear();
+    		this.taskPriority.clear();
     	}
+    }
     
     public String getDataClassName() {
     	String task = this.task.getText();
