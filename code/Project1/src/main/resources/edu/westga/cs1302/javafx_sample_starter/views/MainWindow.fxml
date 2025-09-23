@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.javafx_sample_starter.views.MainWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs1302.javafx_sample_starter.views.MainWindow">
    <children>
       <TextField fx:id="task" layoutX="51.0" layoutY="42.0" prefHeight="25.0" prefWidth="328.0" />
       <Label layoutX="60.0" layoutY="84.0" text="Description" />
@@ -25,5 +25,14 @@
       <Label layoutX="298.0" layoutY="326.0" text="Task Priority" />
       <Button layoutX="353.0" layoutY="237.0" mnemonicParsing="false" onAction="#changeDescription" text="Update Description" />
       <Button layoutX="46.0" layoutY="545.0" mnemonicParsing="false" onAction="#removeTask" text="RemoveTask" />
+      <Label layoutX="45.0" layoutY="595.0" text="Number of task" />
+      <Button layoutX="52.0" layoutY="703.0" mnemonicParsing="false" onAction="#displayTask" text="DisplayTask" />
+      <Label layoutX="221.0" layoutY="595.0" text="High Priority" />
+      <Label layoutX="388.0" layoutY="595.0" text="Medium Priority" />
+      <Label layoutX="46.0" layoutY="637.0" text="Low Priority" />
+      <TextField fx:id="numTask" layoutX="43.0" layoutY="612.0" />
+      <TextField fx:id="numHigh" layoutX="221.0" layoutY="612.0" />
+      <TextField fx:id="numLow" layoutX="43.0" layoutY="654.0" />
+      <TextField fx:id="numMed" layoutX="388.0" layoutY="612.0" />
    </children>
 </AnchorPane>
