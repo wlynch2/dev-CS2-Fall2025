@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Priority;
 import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
-import edu.westga.cs1302.javafx_sample_starter.model.DataClassList;
+import edu.westga.cs1302.javafx_sample_starter.model.UtilityClass;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -60,6 +60,10 @@ public class MainWindow {
      */
     public void initialize() {
     	selector.getItems().addAll("High", "Med", "low");
+    	this.numHigh.setText("0");
+    	this.numLow.setText("0");
+    	this.numMed.setText("0");
+    	this.numTask.setText("0");
     }
     
     @FXML
@@ -91,17 +95,24 @@ public class MainWindow {
     
     @FXML
     void changeDescription(ActionEvent event) {
-    	this.descriptionOutput.clear();
-  
-    	String description = this.getDataClassDescription();
-    	DataClass item = list.getSelectionModel().getSelectedItem();
-    	String des = item.getDescription();
-    	DataClass data = new DataClass("", des, "");
+    	
+    	try {
+    		this.descriptionOutput.clear();
+    		String description = this.getDataClassDescription();
+    		DataClass item = list.getSelectionModel().getSelectedItem();
+    		String des = item.getDescription();
+    		
+    		DataClass data = new DataClass("", des, "");
     	
     	if (item != null) {
     		this.descriptionOutput.clear();
     		
     		this.descriptionOutput.setText(description);
+    	}
+    	} catch(NullPointerException e) {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+    		alert.setContentText("No Task In List");
+    		alert.showAndWait();
     	}
     }
 
@@ -148,10 +159,12 @@ public class MainWindow {
 
     @FXML
     void displayTask(ActionEvent event) {
+    	   	
     	int listSize = list.getItems().size();
+    	DataClass item = list.getSelectionModel().getSelectedItem();
     	int high = 0;
     	int med = 0;
-    	int low = 0;
+    	int low = 0;   
     	
     	for (DataClass list : list.getItems()) {
     		if (list.getPriority().equals("High")) {
@@ -160,16 +173,23 @@ public class MainWindow {
     			med++;
     		} else if (list.getPriority().equals("low")) {
     			low++;
+    		} else if (list.getPriority().isEmpty()) {
+    			this.numTask.setText("0");
     		}
     		
-    		String strHigh = Integer.toString(high);
+      		String strHigh = Integer.toString(high);
     		String strMed = Integer.toString(med);
     		String strLow = Integer.toString(low);
     		String strTask = Integer.toString(listSize);
+    		
+  
     		this.numHigh.setText(strHigh);
     		this.numMed.setText(strMed);
     		this.numLow.setText(strLow);
     		this.numTask.setText(strTask);
+    		
+        
+    		
     	}
     }
     
