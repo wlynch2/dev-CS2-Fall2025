@@ -92,7 +92,7 @@ public class MainWindow {
     @FXML
     void changeDescription(ActionEvent event) {
     	this.descriptionOutput.clear();
-    	
+  
     	String description = this.getDataClassDescription();
     	DataClass item = list.getSelectionModel().getSelectedItem();
     	String des = item.getDescription();
