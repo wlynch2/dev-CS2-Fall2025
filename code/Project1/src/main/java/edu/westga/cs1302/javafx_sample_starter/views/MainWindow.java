@@ -8,9 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Priority;
 import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
-import edu.westga.cs1302.javafx_sample_starter.model.UtilityClass;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -37,8 +35,7 @@ public class MainWindow {
 
 	    @FXML
 	    private ComboBox<String> selector;
-	    
-	    
+	  
 	    @FXML
 	    private TextField numHigh;
 
@@ -50,16 +47,12 @@ public class MainWindow {
 
 	    @FXML
 	    private TextField numTask;
-	    
-	    
-	    
-
     
     /**
      * Perform any needed initialization of UI components and underlying objects.
      */
     public void initialize() {
-    	selector.getItems().addAll("High", "Med", "low");
+    	this.selector.getItems().addAll("High", "Med", "low");
     	this.numHigh.setText("0");
     	this.numLow.setText("0");
     	this.numMed.setText("0");
@@ -70,7 +63,7 @@ public class MainWindow {
     void addName(ActionEvent event) {
     	String task = this.getDataClassName();
     	String description = this.getDataClassDescription();
-    	String priority = selector.getValue();
+    	String priority = this.selector.getValue();
     	
     	try {
         	DataClass data = new DataClass(task, description, priority);
@@ -79,18 +72,11 @@ public class MainWindow {
         	this.list.getItems().add(data);
             this.descriptionOutput.setText(data.getDescription());
             this.taskPriority.setText(data.getPriority());
-    	} 
-    	catch (IllegalArgumentException e) {
+    	} catch (IllegalArgumentException error) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
-    		alert.setContentText(e.getMessage());
+    		alert.setContentText(error.getMessage());
     		alert.showAndWait();
     	}
-    	
-
-    	
-    
-    	
-    	
     }
     
     @FXML
@@ -99,17 +85,17 @@ public class MainWindow {
     	try {
     		this.descriptionOutput.clear();
     		String description = this.getDataClassDescription();
-    		DataClass item = list.getSelectionModel().getSelectedItem();
+    		DataClass item = this.list.getSelectionModel().getSelectedItem();
     		String des = item.getDescription();
     		
     		DataClass data = new DataClass("", des, "");
     	
-    	if (item != null) {
-    		this.descriptionOutput.clear();
+    		if (item != null) {
+    			this.descriptionOutput.clear();
     		
-    		this.descriptionOutput.setText(description);
-    	}
-    	} catch(NullPointerException e) {
+    			this.descriptionOutput.setText(description);
+    		}
+    	} catch (NullPointerException error) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("No Task In List");
     		alert.showAndWait();
@@ -117,20 +103,14 @@ public class MainWindow {
     }
 
     @FXML
-    void popUp(ActionEvent event) {
-  
-    }
-    @FXML
     void changeTask(MouseEvent event) {
     		
     		try {
-    			DataClass item = list.getSelectionModel().getSelectedItem();
+    			DataClass item = this.list.getSelectionModel().getSelectedItem();
     			
     			String prevDescription = item.getDescription();
     			String prevPriority = item.getPriority();
-    			
-    			String d = description.getText();
-    			DataClass data = new DataClass("", d, "");
+    		
     			if (item != null) {
     				
     				this.descriptionOutput.setText(prevDescription);
@@ -138,8 +118,7 @@ public class MainWindow {
     		
     			}
     	
-    		}
-    		catch(NullPointerException n) {
+    		} catch (NullPointerException error) {
         		Alert alert = new Alert(Alert.AlertType.ERROR);
         		alert.setContentText("No Task In List");
         		alert.showAndWait();
@@ -148,20 +127,19 @@ public class MainWindow {
     
     @FXML
     void removeTask(ActionEvent event) {
-    	DataClass item = list.getSelectionModel().getSelectedItem();
+    	DataClass item = this.list.getSelectionModel().getSelectedItem();
     	if (item != null) {
-    		list.getItems().remove(item);
+    		this.list.getItems().remove(item);
     		this.descriptionOutput.clear();
     		this.taskPriority.clear();
     	}
     }
     
-
     @FXML
     void displayTask(ActionEvent event) {
     	   	
-    	int listSize = list.getItems().size();
-    	DataClass item = list.getSelectionModel().getSelectedItem();
+    	int listSize = this.list.getItems().size();
+    	DataClass item = this.list.getSelectionModel().getSelectedItem();
     	int high = 0;
     	int med = 0;
     	int low = 0;   
@@ -182,7 +160,6 @@ public class MainWindow {
     		String strLow = Integer.toString(low);
     		String strTask = Integer.toString(listSize);
     		
-  
     		this.numHigh.setText(strHigh);
     		this.numMed.setText(strMed);
     		this.numLow.setText(strLow);
@@ -193,20 +170,23 @@ public class MainWindow {
     	}
     }
     
+    /**
+     * used to grab the value from the DataClass task param for further use
+     * @return the task that is assigned to the DataClasses first param
+     */
     public String getDataClassName() {
     	String task = this.task.getText();
     	DataClass data = new DataClass(task, "", "");
     	return data.getTask();
     }
     
+    /**
+     * Used to grab the Value from DataClass second param for further use
+     * @return the description that is assigned to the DataClasses second param
+     */
     public String getDataClassDescription() {
     	String description = this.description.getText();
     	DataClass data = new DataClass("", description, "");
     	return data.getDescription();
     }
-
-    
-    	
-    
-
 }
