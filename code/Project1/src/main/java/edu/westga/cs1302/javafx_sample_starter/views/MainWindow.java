@@ -92,6 +92,7 @@ public class MainWindow {
     	
     		if (item != null) {
     			this.descriptionOutput.clear();
+    			item.setDescription(description);
     		
     			this.descriptionOutput.setText(description);
     		}
@@ -132,6 +133,10 @@ public class MainWindow {
     		this.list.getItems().remove(item);
     		this.descriptionOutput.clear();
     		this.taskPriority.clear();
+    		this.numHigh.setText("0");
+    		this.numMed.setText("0");
+    		this.numLow.setText("0");
+    		this.numTask.setText("0");
     	}
     }
     
@@ -164,8 +169,6 @@ public class MainWindow {
     		this.numMed.setText(strMed);
     		this.numLow.setText(strLow);
     		this.numTask.setText(strTask);
-    		
-        
     		
     	}
     }
