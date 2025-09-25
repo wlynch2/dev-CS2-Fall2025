@@ -61,7 +61,7 @@ public class TaskDetails {
 	
 	/**
 	 * setter method for the users description used to set the description
-	 * @param description String used to set the description of whatever string is in the param
+	 * @param description String used to set the description of whatever string is in the parameter
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -69,7 +69,7 @@ public class TaskDetails {
 	
 	/**
 	 * 
-	 * method to overide the java built in toString method 
+	 * method to overrides the java built in toString method 
 	 * return task returns the users task but as a string
 	 * 
 	 */

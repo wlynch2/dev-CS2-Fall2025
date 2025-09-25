@@ -55,4 +55,6 @@ public class TestTaskDetailsConstructor {
 		task.setDescription("HELLO");
 		assertEquals("HELLO", task.getDescription());
 	}
+	
+
 }

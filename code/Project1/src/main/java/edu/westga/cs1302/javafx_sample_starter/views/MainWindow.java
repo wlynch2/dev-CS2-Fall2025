@@ -8,7 +8,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import java.util.ArrayList;
+
 import edu.westga.cs1302.javafx_sample_starter.model.TaskDetails;
+import edu.westga.cs1302.javafx_sample_starter.model.UtilityClass;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -151,20 +155,21 @@ public class MainWindow {
     	   	
     	int listSize = this.list.getItems().size();
     	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
+    	String currItem = this.selector.getValue();
     	int high = 0;
     	int med = 0;
     	int low = 0;   
-    	
-    	for (TaskDetails list : list.getItems()) {
-    		if (list.getPriority().equals("High")) {
-    			high++;
-    		} else if (list.getPriority().equals("Med")) {
-    			med++;
-    		} else if (list.getPriority().equals("low")) {
-    			low++;
-    		} else if (list.getPriority().isEmpty()) {
-    			this.numTask.setText("0");
-    		}
+    	ArrayList<TaskDetails> b = new ArrayList<>();
+    	b.add(item);
+    	UtilityClass.getHighPriority(currItem, b);
+//    	for (TaskDetails list : list.getItems()) {
+//    		if (list.getPriority().equals("High")) {
+//    			high++;
+//    		} else if (list.getPriority().equals("Med")) {
+//    			med++;
+//    		} else if (list.getPriority().equals("low")) {
+//    			low++;
+//    		}
     		
       		String strHigh = Integer.toString(high);
     		String strMed = Integer.toString(med);
@@ -176,7 +181,7 @@ public class MainWindow {
     		this.numLow.setText(strLow);
     		this.numTask.setText(strTask);
     		
-    	}
+    	
     }
     
     /**

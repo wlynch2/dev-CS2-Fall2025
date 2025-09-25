@@ -41,7 +41,7 @@ public class StudentDataPersistenceManager {
 		try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {
 			for (Student currStudent : students) {
 				if (currStudent != null) {
-					writer.write(currStudent.getName() + System.lineSeparator());
+					writer.write(currStudent.getName() + ",");
 					writer.write(currStudent.getGrade() + System.lineSeparator());
 				}
 			}
