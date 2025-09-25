@@ -28,16 +28,26 @@ public class StudentDataPersistenceManager {
 	 * @throws IOException Unable to write to FILE_LOCATION
 	 */
 	public static void saveStudentData(Student[] students) throws IOException, IllegalArgumentException {
+		StudentDataPersistenceManager.saveStudentData(students, StudentDataPersistenceManager.FILE_LOCATION);
+		if (students == null) {
+			throw new IllegalArgumentException("must provide an array of students");
+		}
+	}
+	
+	public static void saveStudentData(Student[] students, String fileLocation) throws IOException, IllegalArgumentException {
 		if (students == null) {
 			throw new IllegalArgumentException("must provide an array of students");
 		}
 		try (FileWriter writer = new FileWriter(StudentDataPersistenceManager.FILE_LOCATION)) {
 			for (Student currStudent : students) {
-				writer.write(currStudent.getName() + System.lineSeparator());
-				writer.write(currStudent.getGrade() + System.lineSeparator());
+				if (currStudent != null) {
+					writer.write(currStudent.getName() + System.lineSeparator());
+					writer.write(currStudent.getGrade() + System.lineSeparator());
+				}
 			}
 		}
 	}
+
 
 	/** Load the students!
 	 * 

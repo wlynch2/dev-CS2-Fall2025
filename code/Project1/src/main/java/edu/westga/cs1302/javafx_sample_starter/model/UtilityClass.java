@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class UtilityClass {
 
-	public static int getHighPriority(String priority, ArrayList<DataClass> list) {
+	public static int getHighPriority(String priority, ArrayList<TaskDetails> list) {
     	int high = 0;  
     	
-    	for (DataClass currList : list) {
+    	for (TaskDetails currList : list) {
     		if (currList.getPriority().equals("priority")) {
     			high++;
     		}

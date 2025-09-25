@@ -6,7 +6,7 @@ package edu.westga.cs1302.javafx_sample_starter.model;
  * @author wlynch2
  * @version Fall2025
  */
-public class DataClass {
+public class TaskDetails {
 	
 	private final String task;
 	private String description;
@@ -14,11 +14,12 @@ public class DataClass {
 	
 	/**
 	 * Constructor for DataClass stores assigns the instance variables to the params
+	 * 
 	 * @param task String is the task for the user cannot be null
 	 * @param description String - description for the users task cannot be null
 	 * @param priority String - stores the priority of the users task cannot be null
 	 */
-	public DataClass(String task, String description, String priority) {
+	public TaskDetails(String task, String description, String priority) {
 		if (task == null) {
 			throw new IllegalArgumentException("task cannot be null");
 		}

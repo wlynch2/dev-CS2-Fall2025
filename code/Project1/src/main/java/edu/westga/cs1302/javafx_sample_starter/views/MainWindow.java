@@ -8,7 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import edu.westga.cs1302.javafx_sample_starter.model.DataClass;
+import edu.westga.cs1302.javafx_sample_starter.model.TaskDetails;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -25,7 +25,7 @@ public class MainWindow {
 	    private TextArea descriptionOutput;
 
 	    @FXML
-	    private ListView<DataClass> list;
+	    private ListView<TaskDetails> list;
 
 	    @FXML
 	    private TextField task;
@@ -66,17 +66,23 @@ public class MainWindow {
     	String priority = this.selector.getValue();
     	
     	try {
-        	DataClass data = new DataClass(task, description, priority);
+        	TaskDetails data = new TaskDetails(task, description, priority);
         	this.taskPriority.setText(data.getPriority());
         	
         	this.list.getItems().add(data);
             this.descriptionOutput.setText(data.getDescription());
             this.taskPriority.setText(data.getPriority());
+            this.task.clear();
+        	this.description.clear();
+        	this.selector.getItems().clear();
+        	this.selector.getItems().addAll("High", "Med", "low");
+       
     	} catch (IllegalArgumentException error) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText(error.getMessage());
     		alert.showAndWait();
     	}
+    
     }
     
     @FXML
@@ -85,10 +91,10 @@ public class MainWindow {
     	try {
     		this.descriptionOutput.clear();
     		String description = this.getDataClassDescription();
-    		DataClass item = this.list.getSelectionModel().getSelectedItem();
+    		TaskDetails item = this.list.getSelectionModel().getSelectedItem();
     		String des = item.getDescription();
     		
-    		DataClass data = new DataClass("", des, "");
+    		TaskDetails data = new TaskDetails("", des, "");
     	
     		if (item != null) {
     			this.descriptionOutput.clear();
@@ -107,7 +113,7 @@ public class MainWindow {
     void changeTask(MouseEvent event) {
     		
     		try {
-    			DataClass item = this.list.getSelectionModel().getSelectedItem();
+    			TaskDetails item = this.list.getSelectionModel().getSelectedItem();
     			
     			String prevDescription = item.getDescription();
     			String prevPriority = item.getPriority();
@@ -128,7 +134,7 @@ public class MainWindow {
     
     @FXML
     void removeTask(ActionEvent event) {
-    	DataClass item = this.list.getSelectionModel().getSelectedItem();
+    	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
     	if (item != null) {
     		this.list.getItems().remove(item);
     		this.descriptionOutput.clear();
@@ -144,12 +150,12 @@ public class MainWindow {
     void displayTask(ActionEvent event) {
     	   	
     	int listSize = this.list.getItems().size();
-    	DataClass item = this.list.getSelectionModel().getSelectedItem();
+    	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
     	int high = 0;
     	int med = 0;
     	int low = 0;   
     	
-    	for (DataClass list : list.getItems()) {
+    	for (TaskDetails list : list.getItems()) {
     		if (list.getPriority().equals("High")) {
     			high++;
     		} else if (list.getPriority().equals("Med")) {
@@ -179,7 +185,7 @@ public class MainWindow {
      */
     public String getDataClassName() {
     	String task = this.task.getText();
-    	DataClass data = new DataClass(task, "", "");
+    	TaskDetails data = new TaskDetails(task, "", "");
     	return data.getTask();
     }
     
@@ -189,7 +195,7 @@ public class MainWindow {
      */
     public String getDataClassDescription() {
     	String description = this.description.getText();
-    	DataClass data = new DataClass("", description, "");
+    	TaskDetails data = new TaskDetails("", description, "");
     	return data.getDescription();
     }
 }
