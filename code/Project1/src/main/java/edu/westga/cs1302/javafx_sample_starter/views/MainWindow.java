@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 import edu.westga.cs1302.javafx_sample_starter.model.TaskDetails;
-import edu.westga.cs1302.javafx_sample_starter.model.UtilityClass;
+import edu.westga.cs1302.javafx_sample_starter.model.PriorityCount;
 
 /**
  * Controller class for drawing various things to our canvas window.
@@ -96,21 +96,20 @@ public class MainWindow {
     		this.descriptionOutput.clear();
     		String description = this.getDataClassDescription();
     		TaskDetails item = this.list.getSelectionModel().getSelectedItem();
-    		String des = item.getDescription();
-    		
-    		TaskDetails data = new TaskDetails("", des, "");
-    	
+   
     		if (item != null) {
     			this.descriptionOutput.clear();
     			item.setDescription(description);
     		
     			this.descriptionOutput.setText(description);
+    			
     		}
     	} catch (NullPointerException error) {
     		Alert alert = new Alert(Alert.AlertType.ERROR);
     		alert.setContentText("No Task In List");
     		alert.showAndWait();
     	}
+    	this.description.clear();
     }
 
     @FXML
@@ -141,8 +140,10 @@ public class MainWindow {
     	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
     	if (item != null) {
     		this.list.getItems().remove(item);
+    		
     		this.descriptionOutput.clear();
     		this.taskPriority.clear();
+    		
     		this.numHigh.setText("0");
     		this.numMed.setText("0");
     		this.numLow.setText("0");
@@ -154,33 +155,19 @@ public class MainWindow {
     void displayTask(ActionEvent event) {
     	   	
     	int listSize = this.list.getItems().size();
-    	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
-    	String currItem = this.selector.getValue();
-    	int high = 0;
-    	int med = 0;
-    	int low = 0;   
-    	ArrayList<TaskDetails> b = new ArrayList<>();
-    	b.add(item);
-    	UtilityClass.getHighPriority(currItem, b);
-//    	for (TaskDetails list : list.getItems()) {
-//    		if (list.getPriority().equals("High")) {
-//    			high++;
-//    		} else if (list.getPriority().equals("Med")) {
-//    			med++;
-//    		} else if (list.getPriority().equals("low")) {
-//    			low++;
-//    		}
+    	int high = PriorityCount.getPriortyCount("High", new ArrayList<>(this.list.getItems()));
+    	int med = PriorityCount.getPriortyCount("Med", new ArrayList<>(this.list.getItems()));
+    	int low = PriorityCount.getPriortyCount("low", new ArrayList<>(this.list.getItems()));
+    
+      	String strHigh = Integer.toString(high);
+    	String strMed = Integer.toString(med);
+    	String strLow = Integer.toString(low);
+    	String strTask = Integer.toString(listSize);
     		
-      		String strHigh = Integer.toString(high);
-    		String strMed = Integer.toString(med);
-    		String strLow = Integer.toString(low);
-    		String strTask = Integer.toString(listSize);
-    		
-    		this.numHigh.setText(strHigh);
-    		this.numMed.setText(strMed);
-    		this.numLow.setText(strLow);
-    		this.numTask.setText(strTask);
-    		
+    	this.numHigh.setText(strHigh);
+    	this.numMed.setText(strMed);
+    	this.numLow.setText(strLow);
+    	this.numTask.setText(strTask);
     	
     }
     
