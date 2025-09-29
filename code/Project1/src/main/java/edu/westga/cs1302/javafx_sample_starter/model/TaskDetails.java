@@ -73,6 +73,7 @@ public class TaskDetails {
 	 * return task returns the users task but as a string
 	 * 
 	 */
+	@Override
 	public String toString() {
 		return this.task;
 	}

@@ -56,5 +56,21 @@ public class TestTaskDetailsConstructor {
 		assertEquals("HELLO", task.getDescription());
 	}
 	
-
+	@Test
+	void testWhenTaskIsEmpty() {
+		TaskDetails task = new TaskDetails("", "2", "3");
+		assertEquals("", task.getTask());
+	}
+	
+	@Test
+	void testWhenDescriptionIsEmpty() {
+		TaskDetails task = new TaskDetails("1", "", "3");
+		assertEquals("", task.getDescription());
+	}
+	
+	@Test
+	void testWhenPriorityIsEmpty() {
+		TaskDetails task = new TaskDetails("1", "2", "");
+		assertEquals("", task.getPriority());
+	}
 }

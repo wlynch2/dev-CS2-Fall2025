@@ -26,6 +26,7 @@ public class PriorityCount {
 		if (list == null) {
 			throw new IllegalArgumentException("list cannot be null");
 		}
+		
     	int count = 0;  
     	
     	for (TaskDetails currList : list) {

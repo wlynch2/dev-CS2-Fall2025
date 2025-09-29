@@ -1,0 +1,169 @@
+commit 9e693579c54143760bd29f1e457ac8952b9b396d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 18:42:38 2025 -0400
+
+     added test methods for the methods in the billCal class
+    
+    Tested for when their is no value a single value and multiple value to
+    ensure they all work as planned also made sure there is no checkstyle errors
+
+commit dc03426c11c423f2cc7990a16f564c3b95431094
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 17:18:18 2025 -0400
+
+     wrote test methods for billcalc constructor
+    
+    just wrote test methods for the billCalculations constructor and wrote method specifications for the other methods in the billCalculations class
+
+commit 50257da419de598f7e809c6d1bf4077b7852f1a8
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 16:17:33 2025 -0400
+
+    made alot of changes added helper methods
+    
+    I added helper methods instead of doing all the calculations in the
+    constructor, I honestly didnt find this solution completely on my own
+    i called my uncle because i felt something was off led me in the right
+    direction my recomennding helper methods instead of doing it all in one methodstill need to right test methods and implement in BillView Class
+
+commit ba1323139605478778f6e072a44efbdb99e8e14c
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 15:51:32 2025 -0400
+
+     finished editing BillCalculations method and fixed checkstyles
+    
+    fixed all the checkstyle errors while making minor changes to BillCalculations
+    and billView method
+    still need to write test method
+
+commit eac67df76e0112e7fc7251233bf7a87d59981c55
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sat Sep 13 20:27:13 2025 -0400
+
+    corrected the BillCalculationsClass
+    
+    I made changes to the BillCalculations class where it takes an array of items
+    while also making changes to the BillView class allowing the billCalculations class to control the subtotal
+    I still need to write test methods for the BillCalculations contructor
+    fix checkstyle errors and ensure everything runs how its supposed to
+
+commit 782b0697a0c6b6ad6329c51f47fc78c8ebc97d5d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sat Sep 13 11:47:16 2025 -0400
+
+    added the GetCalculations method
+    
+    unsure if it works how intended still need to write test method and implement it into BillView Class
+
+commit dc8bcde894634a3d8e514159a7c1299d49c9532f
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 11 12:52:38 2025 -0400
+
+    created get calculations class
+    
+    added some methods into the class that i want to use for formatting
+    have to change them to appropialtly work with what is asked
+
+commit 21cb03c7b1b99b340981c5d895451128d10cb90c
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 11 11:58:58 2025 -0400
+
+    adding project to repo
+    
+    just adding the project into the repo
+
+commit dafd0c2ec03c26044da1c73c4fd9552992386117
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 18:31:25 2025 -0400
+
+    added instance variables to consistently add items to BillView
+    
+    Instead of using the initialize method i figured i would be able to simply
+    declare instance variables at the top of the class and add the items to
+    BillView in which it will hold onto all the values of the billItem
+    
+    I also fixed all the checkstyle warnings
+
+commit 087bc50a93db1317ffdd67b9ea3ca59fede099c3
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 12:45:20 2025 -0400
+
+    Making sure it works with prof
+
+commit a7d1b06cd1e3a5e74766feffb44f61d253e3134d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 10:33:52 2025 -0400
+
+    Set up the project
+    renamed the project lab3
+    added bill classes into lab 3
+
+commit e4995aeb0277da444fef83f644c5ca6408fefbd5
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 00:15:17 2025 -0400
+
+    wrote the test methods for TestGetText.java
+    fixed some checkstyle errors in TestConstructor.java
+    fixed formatting to make more presentible
+
+commit 350f57ee0d952f6fdc90d84a30a78de80008a065
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 2 11:38:24 2025 -0400
+
+    fixed checstyle erros in bill.java, billItems.java, and BillView.java
+    started work on the first test method for BillView.java
+
+commit f67fbd344dea3e8ece56d4e154b8548b46a2e270
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 21:21:21 2025 -0400
+
+    Finshed test methods for TestAddItem class
+    Finished test methods for TestConstructor.java class
+
+commit 9290e1f51951c261c4ce776d1728d04c90f3df81
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:50:05 2025 -0400
+
+    created multiple test packages and test classes
+    added a test method for the add item method
+
+commit 23f0e212fa58097ca537b7a2b02eecda17f00448
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:02:53 2025 -0400
+
+    adding the project to my repository
+
+commit 84c85b9131dad2a9ce6e73ed2c1eab768fff9202
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Aug 27 17:42:32 2025 -0400
+
+    moved getText() logic to billView
+    got rid of magic numbers and switched them with constants
+
+commit a13070b5dc6acc0097bcebe259760ffc28344504
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 12:31:51 2025 -0400
+
+    Lab 1 cs1302 f25
+
+commit 150ef53e3bf7c36af7b28528deadcffb086991bb
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:38:17 2025 -0400
+
+    project in
+
+commit 3717b49af2b0fb45f7336f54945267fc8e1629d4
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:01:20 2025 -0400
+
+    Creating message for read me
+    
+    1) didnt get the message
+    2)dindt get the message
+    3) didnt get the message (/README/)
+
+commit 4079d48cb23c01d5c5b26af0e449303c3b3e34a1
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Aug 19 10:04:38 2025 -0400
+
+    Initial commit

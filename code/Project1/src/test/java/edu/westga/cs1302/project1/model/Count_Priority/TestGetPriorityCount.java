@@ -11,7 +11,6 @@ import edu.westga.cs1302.javafx_sample_starter.model.TaskDetails;
 
 public class TestGetPriorityCount {
 	
-
 	@Test
 	void testWhenPriorityIsNull() {
 		ArrayList<TaskDetails> list = new ArrayList<>();
@@ -61,7 +60,7 @@ public class TestGetPriorityCount {
 	}
 	
 	@Test
-	void testWithNoItems() {
+	void testWhenListIsEmpty() {
 		ArrayList<TaskDetails> list = new ArrayList<>();
 		assertEquals(PriorityCount.getPriortyCount("high", list), 0);
 	}
@@ -92,6 +91,4 @@ public class TestGetPriorityCount {
 		assertEquals(PriorityCount.getPriortyCount("med", list), 2);
 		assertEquals(PriorityCount.getPriortyCount("high", list), 2);
 	}
-
-	
 }

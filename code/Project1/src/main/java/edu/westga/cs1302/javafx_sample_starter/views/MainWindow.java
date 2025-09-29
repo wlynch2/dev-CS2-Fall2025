@@ -63,8 +63,13 @@ public class MainWindow {
     	this.numTask.setText("0");
     }
     
+    /**
+     * used to get all the data from the task, selector, and description and assign that values to the listView taskPriority and description output
+     * 
+     * @param event the button used to perform the method
+     */
     @FXML
-    void addName(ActionEvent event) {
+    void addTask(ActionEvent event) {
     	String task = this.getDataClassName();
     	String description = this.getDataClassDescription();
     	String priority = this.selector.getValue();
@@ -86,9 +91,14 @@ public class MainWindow {
     		alert.setContentText(error.getMessage());
     		alert.showAndWait();
     	}
-    
     }
     
+    /**
+     * used to clear the current description and replace and 
+     * set the description variable with the new description
+     * 
+     * @param event the button used to perform the method
+     */
     @FXML
     void changeDescription(ActionEvent event) {
     	
@@ -111,7 +121,12 @@ public class MainWindow {
     	}
     	this.description.clear();
     }
-
+    
+    /**
+     * used to select the current item in the list view and change the taskPriority and the 
+     * description output respectively 
+     * @param event the button used to perform the method
+     */
     @FXML
     void changeTask(MouseEvent event) {
     		
@@ -135,9 +150,15 @@ public class MainWindow {
     		}
     }
     
+    /**
+     * used to remove a task from the list and set the task counts all to zero
+     * 
+     * @param event the button used to perform the method
+     */
     @FXML
     void removeTask(ActionEvent event) {
     	TaskDetails item = this.list.getSelectionModel().getSelectedItem();
+    	
     	if (item != null) {
     		this.list.getItems().remove(item);
     		
@@ -151,10 +172,16 @@ public class MainWindow {
     	}
     }
     
+    /**
+     * used to count the amount of each priority in the list and add it the total to its relative textField
+     * 
+     * @param event the button used to perform the method
+     */
     @FXML
-    void displayTask(ActionEvent event) {
+    void countPriority(ActionEvent event) {
     	   	
     	int listSize = this.list.getItems().size();
+ 
     	int high = PriorityCount.getPriortyCount("High", new ArrayList<>(this.list.getItems()));
     	int med = PriorityCount.getPriortyCount("Med", new ArrayList<>(this.list.getItems()));
     	int low = PriorityCount.getPriortyCount("low", new ArrayList<>(this.list.getItems()));
@@ -172,8 +199,9 @@ public class MainWindow {
     }
     
     /**
-     * used to grab the value from the DataClass task param for further use
-     * @return the task that is assigned to the DataClasses first param
+     * used to grab the value from the DataClass task parameter for further use
+     * 
+     * @return the task that is assigned to the DataClasses first parameter
      */
     public String getDataClassName() {
     	String task = this.task.getText();
@@ -182,8 +210,9 @@ public class MainWindow {
     }
     
     /**
-     * Used to grab the Value from DataClass second param for further use
-     * @return the description that is assigned to the DataClasses second param
+     * Used to grab the Value from DataClass second parameter for further use
+     * 
+     * @return the description that is assigned to the DataClasses second parameter
      */
     public String getDataClassDescription() {
     	String description = this.description.getText();

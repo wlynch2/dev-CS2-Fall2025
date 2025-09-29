@@ -1,0 +1,334 @@
+commit 91203f7adffc060e2ade5bc20a1013dd933d5b9c
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sat Sep 27 17:20:27 2025 -0400
+
+    implemented PriorityCount into main window
+    
+    Implemented PriorityCount into MainWindow so now the static method in PriorityCount handles counting the amount of the task priority in the list
+    also completed the test class for getPriorityCount
+    Still need to write test methods for MainWindow methods
+
+commit aa1a8e4dccc905b0e313dbe2a270dba48682a075
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 25 12:52:23 2025 -0400
+
+    wrote test methods for save class
+    
+    just wrote test methods and concatinated the first item with a comma
+
+commit c5544e5af790873913d9bfd9e8eaad2018557f33
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 25 11:31:12 2025 -0400
+
+    added test class for TaskDetailsConstructor
+    
+    wrote test methods verfiying everything works as intended
+
+commit cb2fdd393fe0e343d23f04ffeba0327d8af4d235
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 25 09:43:28 2025 -0400
+
+     adding lab5 to repo
+    
+    just adding the lab
+
+commit 3bfb47b10b1bfd0392494d6b10405a1c06e7e304
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 24 11:52:22 2025 -0400
+
+     fixed bugs and eddited utilityClass class
+    
+    there was a bug where if the list was empty items would still display in the task count and that was fixed by setting the task counts to 0 every time a item is removed
+    I also fixed a bug that was causing the discription to go back to the previous list description after clicking on the list, i just had to set the description to the list item than set the text after
+    Still need to write test and implement utilityClass into the mainWindow
+
+commit 197926e648b5cbf411fabd7c71f148384c19356d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 23 17:59:43 2025 -0400
+
+     fixed most checkstyle errors
+    
+    fixed alot of my checkstyle errors still need to do one on the toString method and finish the rest of part 5
+    I still have some bugs with some of my codes implementation but im completely stuck and will need your help!
+
+commit 6cde31f44401200617228d1a216e2c77ff860e22
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 23 13:15:17 2025 -0400
+
+    added try catch and wrote Utility class
+    
+    So i first designed and implemented the code in main window to get a idea on what i need to write in the utility class its working in the main window but im struggling to implement that with the utility class
+    i also wrote a try catch for the change description class so it does not throw a null pointer exception when there is no value in the description
+    need to right test methods which i will email you about later today along with some minor debugging issues
+
+commit c287527c423e82d65bdcbdde20c28dd74c24c7b3
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 23 09:41:10 2025 -0400
+
+    adding lecture to the repo
+    
+    just adding lecture code
+
+commit b515e2cb6c5d335f15db2096c7bcc6ce1e617a2a
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 23 09:32:40 2025 -0400
+
+    implemented the display taks method in MainWindow
+    
+    i wrote a method to count the amount of taks under each priority while also counting the total ammount of task and displaying it on the stage.
+    i still need to write test methods and write another class to handle the counting for mainwindow
+    need to also write a couple more try catches a couple buttons are running erros i didnt realize before.
+
+commit 90e1ba913716f0731c513d213ef6ffbca526abc1
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 21 20:36:50 2025 -0400
+
+    wrote try catchs for methods in MainWindow
+    
+    just wrote try catches for the methods they could cause the program to crash
+    still need to write test methods and do part 5
+
+commit 87bf97ae9e0a2f7c50d8b05071d4a9aa6c44b5f6
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 21 20:03:32 2025 -0400
+
+    implememted remove task method
+    
+    pretty much did the same thing i did with the change task method but instead of only setting the outputs i removed the item if the selected item is not null
+    this taskPriority and descriptionOutput are also cleared when this method is called
+    Still need to do try catch doing that now
+
+commit 4ed98f33270232b0310829b7dfe60cd8f82c314b
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 21 19:47:46 2025 -0400
+
+    implemented updateTask method
+    
+    created a button in scene builder and used the code behind class to make it replace the information from the previous output and replace it with the new input from the user
+    also created a change task method that makes it to where you can highlight which task you want and it will update the information depending on what task your on
+    still need to write try catch methods and Test code but i have no idea why my imports arent working will see proffessor in office hours
+    starting on the remove task method now
+
+commit 0b370c9283803476d24edbf3016dc580fa03d539
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 23:42:48 2025 -0400
+
+     started on 3-A and 3-B
+    
+    I made a couple changes and added a couple things for one i added a new class to stroe the DataClass objects in a arrayList in order to keep the values, Im not sure if this would work but im trying it and if not ill just have to go back
+    i also implemented the update task button and now im working on part 3-C
+
+commit 3e1a1a518a9541e7f46ebeb940cdc33fe1ec0c76
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 19:10:09 2025 -0400
+
+    finished 2A-B
+    
+    added all the requied ui elements to the stage with scenebuilder and than connected them to the codeBehind class in order to implement the description and the prioritys into the correct locations.
+    still need to write test methods and try catch but i need the professors help so i will come back to it
+
+commit 0de03186fab11c3b3a806f464c1b01cd0fc2090d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 18:13:41 2025 -0400
+
+    worked on 1-C
+    
+    added helper methods in order to initalize the task, description, and
+    priority in the list, added predetermined values for priority
+    still need to write test methods for the items DataClass class
+
+commit ca17a31bd1f9d244ef5210b753601e4f927284fa
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 14:45:55 2025 -0400
+
+    reorganized scene and edited DataClass.java
+    
+    made priorty and task final and reorganized the ui to look more presentible
+
+commit 286235bad777210cb588d05bd2ef72bbf77f2cea
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 14:27:48 2025 -0400
+
+     added ui elements to the stage with scene builder
+    
+    added the required ui componetts needed for part 1-A and connected them
+    in the MainWindow with my code
+
+commit eb1a43003875a9d8803dc349b1b03ac668e5a894
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Fri Sep 19 14:23:24 2025 -0400
+
+     added project into repo and wrote dataClass
+    
+    I added the project into eclipse and my repo and have written the constructor
+    and getter methods for all the params in the constructor
+
+commit 9e693579c54143760bd29f1e457ac8952b9b396d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 18:42:38 2025 -0400
+
+     added test methods for the methods in the billCal class
+    
+    Tested for when their is no value a single value and multiple value to
+    ensure they all work as planned also made sure there is no checkstyle errors
+
+commit dc03426c11c423f2cc7990a16f564c3b95431094
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 17:18:18 2025 -0400
+
+     wrote test methods for billcalc constructor
+    
+    just wrote test methods for the billCalculations constructor and wrote method specifications for the other methods in the billCalculations class
+
+commit 50257da419de598f7e809c6d1bf4077b7852f1a8
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 16:17:33 2025 -0400
+
+    made alot of changes added helper methods
+    
+    I added helper methods instead of doing all the calculations in the
+    constructor, I honestly didnt find this solution completely on my own
+    i called my uncle because i felt something was off led me in the right
+    direction my recomennding helper methods instead of doing it all in one methodstill need to right test methods and implement in BillView Class
+
+commit ba1323139605478778f6e072a44efbdb99e8e14c
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sun Sep 14 15:51:32 2025 -0400
+
+     finished editing BillCalculations method and fixed checkstyles
+    
+    fixed all the checkstyle errors while making minor changes to BillCalculations
+    and billView method
+    still need to write test method
+
+commit eac67df76e0112e7fc7251233bf7a87d59981c55
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sat Sep 13 20:27:13 2025 -0400
+
+    corrected the BillCalculationsClass
+    
+    I made changes to the BillCalculations class where it takes an array of items
+    while also making changes to the BillView class allowing the billCalculations class to control the subtotal
+    I still need to write test methods for the BillCalculations contructor
+    fix checkstyle errors and ensure everything runs how its supposed to
+
+commit 782b0697a0c6b6ad6329c51f47fc78c8ebc97d5d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Sat Sep 13 11:47:16 2025 -0400
+
+    added the GetCalculations method
+    
+    unsure if it works how intended still need to write test method and implement it into BillView Class
+
+commit dc8bcde894634a3d8e514159a7c1299d49c9532f
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 11 12:52:38 2025 -0400
+
+    created get calculations class
+    
+    added some methods into the class that i want to use for formatting
+    have to change them to appropialtly work with what is asked
+
+commit 21cb03c7b1b99b340981c5d895451128d10cb90c
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 11 11:58:58 2025 -0400
+
+    adding project to repo
+    
+    just adding the project into the repo
+
+commit dafd0c2ec03c26044da1c73c4fd9552992386117
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 18:31:25 2025 -0400
+
+    added instance variables to consistently add items to BillView
+    
+    Instead of using the initialize method i figured i would be able to simply
+    declare instance variables at the top of the class and add the items to
+    BillView in which it will hold onto all the values of the billItem
+    
+    I also fixed all the checkstyle warnings
+
+commit 087bc50a93db1317ffdd67b9ea3ca59fede099c3
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Sep 10 12:45:20 2025 -0400
+
+    Making sure it works with prof
+
+commit a7d1b06cd1e3a5e74766feffb44f61d253e3134d
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 10:33:52 2025 -0400
+
+    Set up the project
+    renamed the project lab3
+    added bill classes into lab 3
+
+commit e4995aeb0277da444fef83f644c5ca6408fefbd5
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Sep 4 00:15:17 2025 -0400
+
+    wrote the test methods for TestGetText.java
+    fixed some checkstyle errors in TestConstructor.java
+    fixed formatting to make more presentible
+
+commit 350f57ee0d952f6fdc90d84a30a78de80008a065
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Sep 2 11:38:24 2025 -0400
+
+    fixed checstyle erros in bill.java, billItems.java, and BillView.java
+    started work on the first test method for BillView.java
+
+commit f67fbd344dea3e8ece56d4e154b8548b46a2e270
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 21:21:21 2025 -0400
+
+    Finshed test methods for TestAddItem class
+    Finished test methods for TestConstructor.java class
+
+commit 9290e1f51951c261c4ce776d1728d04c90f3df81
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:50:05 2025 -0400
+
+    created multiple test packages and test classes
+    added a test method for the add item method
+
+commit 23f0e212fa58097ca537b7a2b02eecda17f00448
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 28 12:02:53 2025 -0400
+
+    adding the project to my repository
+
+commit 84c85b9131dad2a9ce6e73ed2c1eab768fff9202
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Wed Aug 27 17:42:32 2025 -0400
+
+    moved getText() logic to billView
+    got rid of magic numbers and switched them with constants
+
+commit a13070b5dc6acc0097bcebe259760ffc28344504
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 12:31:51 2025 -0400
+
+    Lab 1 cs1302 f25
+
+commit 150ef53e3bf7c36af7b28528deadcffb086991bb
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:38:17 2025 -0400
+
+    project in
+
+commit 3717b49af2b0fb45f7336f54945267fc8e1629d4
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Thu Aug 21 10:01:20 2025 -0400
+
+    Creating message for read me
+    
+    1) didnt get the message
+    2)dindt get the message
+    3) didnt get the message (/README/)
+
+commit 4079d48cb23c01d5c5b26af0e449303c3b3e34a1
+Author: wlynch2 <wlynch2@my.westga.edu>
+Date:   Tue Aug 19 10:04:38 2025 -0400
+
+    Initial commit
