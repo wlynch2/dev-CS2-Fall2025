@@ -31,6 +31,14 @@ class TestSaveStudentData {
 	}
 	
 	@Test
+	void testWhenFileLocationIsNull() throws IllegalArgumentException, IOException {
+		Student[] array = new Student[1];
+		assertThrows(IllegalArgumentException.class, ()->{
+			StudentDataPersistenceManager.saveStudentData(array, null);
+		});
+	}
+	
+	@Test
 	void testWhenStudentisNull() throws IllegalArgumentException, IOException {
 		Student[] array = new Student[0];
 		StudentDataPersistenceManager.saveStudentData(array, "test-data.txt");
@@ -118,6 +126,7 @@ class TestSaveStudentData {
 		try(Scanner reader = new Scanner(inputFile)){ 
 			assertEquals("will,100", reader.nextLine(), "purpose is to check if it skips over null elements");
 			assertEquals("doe,70", reader.nextLine(), "purpose is to check if it skips over null elements");
+			
 			
 		}
 	}

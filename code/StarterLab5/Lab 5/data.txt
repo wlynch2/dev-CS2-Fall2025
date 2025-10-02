@@ -1,1 +1,3 @@
-will,100
+will,92
+iHave,100
+john,13

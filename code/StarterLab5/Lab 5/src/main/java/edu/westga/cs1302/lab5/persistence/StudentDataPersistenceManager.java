@@ -31,9 +31,19 @@ public class StudentDataPersistenceManager {
 		StudentDataPersistenceManager.saveStudentData(students, StudentDataPersistenceManager.FILE_LOCATION);
 	}
 	
+	/** Save the students but with selected file location
+	 * 
+	 * @param students != null
+	 * @param fileLocation != null
+	 * @throws IOException unable to write to file location
+	 * @throws IllegalArgumentException if precondition is violated
+	 */
 	public static void saveStudentData(Student[] students, String fileLocation) throws IOException, IllegalArgumentException {
 		if (students == null) {
 			throw new IllegalArgumentException("must provide an array of students");
+		}
+		if (fileLocation == null) {
+			throw new IllegalArgumentException("must provide fileLocation");
 		}
 		try (FileWriter writer = new FileWriter(fileLocation)) {
 			for (Student currStudent : students) {
@@ -44,7 +54,6 @@ public class StudentDataPersistenceManager {
 			}
 		}
 	}
-
 
 	/** Load the students!
 	 * 
@@ -74,14 +83,14 @@ public class StudentDataPersistenceManager {
 
 	            try {
 	                grade = Integer.parseInt(parts[1].trim());
-	            } catch (NumberFormatException e) {
-	                throw new IOException("Grade value was not formatted as an integer (" + e.getMessage() + ")");
+	            } catch (NumberFormatException error) {
+	                throw new IOException("Grade value was not formatted as an integer (" + error.getMessage() + ")");
 	            }
 
 	            students.add(new Student(name, grade));
 	        }
 	    }
-
+	    
 	    return students.toArray(new Student[0]);
 
 	}
