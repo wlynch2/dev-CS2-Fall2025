@@ -4,19 +4,20 @@ import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 
 import java.util.Comparator;
 
-/** checks if the list is accending
- * 
+/** used to check if taskOne is equal lower or higher than taskTwo and assign it a value respectively
+ * purpose is to assign the items in a Ascending order
  * @author wlynch2
  * @version cs1302
  */
-public class Acending implements Comparator<Task> {
+public class Ascending implements Comparator<Task> {
 	
-	/** compare the task to see if taskA is a lower or equal to priority than taskB
+	/** compare the task to see if taskA is a higher, lower or equal to priority the priority of taskB
 	 * 
-	 * @Precondition parameters cannot be null
+	 * @precondition parameters cannot be null
+	 * @postcondition none
 	 * 
-	 * @param taskOne first task
-	 * @param taskTwo second task
+	 * @param taskOne first task you want compared
+	 * @param taskTwo second task you want compared
 	 * @return if the task priority of a is higher or equal to b
 	 */
 	@Override
