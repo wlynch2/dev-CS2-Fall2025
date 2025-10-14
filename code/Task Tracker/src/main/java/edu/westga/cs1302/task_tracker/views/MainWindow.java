@@ -2,6 +2,8 @@ package edu.westga.cs1302.task_tracker.views;
 
 import java.util.Comparator;
 
+import edu.westga.cs1302.task_tracker.model.Ascending;
+import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 import edu.westga.cs1302.task_tracker.model.TaskUtility;
@@ -80,15 +82,20 @@ public class MainWindow {
     void sortTasks(ActionEvent event) {
     	if (this.order.getValue() != null) {
     		this.tasks.getItems().sort(this.order.getValue());
-    	}
+    	}	
+    	Comparator<Task> comparator = this.order.getValue();
+    	this.tasks.getItems().sort(comparator);
+    	
     }
 
     /** Perform any needed initialization of UI components and underlying objects.
      * 
      */
     public void initialize() {
+    	
     	this.priority.getItems().addAll(TaskPriority.HIGH, TaskPriority.MEDIUM, TaskPriority.LOW);
     	this.priority.setValue(this.priority.getItems().get(0));
-//    	this.order.getItems().add(?)
+    	this.order.getItems().add(new Ascending());
+    	this.order.getItems().add(new Descending());
     }
 }

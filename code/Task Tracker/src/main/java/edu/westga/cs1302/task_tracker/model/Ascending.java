@@ -46,4 +46,12 @@ public class Ascending implements Comparator<Task> {
 		return tempNum;
 		
 	}
+	
+	/**
+	 * overrides the java built in toString method to return Ascending instead
+	 */
+	@Override
+	public String toString() {
+		return "Ascending";
+	}
 }
