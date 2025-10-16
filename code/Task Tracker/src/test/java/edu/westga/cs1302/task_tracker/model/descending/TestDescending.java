@@ -8,7 +8,7 @@ import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;;
 
-class TestCompare {
+class TestDescending {
 
 	@Test
 	void testWhenTaskOneIsNull() {
@@ -58,5 +58,7 @@ class TestCompare {
 		assertEquals(descend.compare(task2, task), 1);
 		assertEquals(descend.compare(task3, task2), 1);
 	}
+	
+
 
 }
