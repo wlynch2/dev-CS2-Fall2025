@@ -1,4 +1,7 @@
 package edu.westga.cs1302.task_tracker.model;
+import java.util.ArrayList;
+
+import edu.westga.cs1302.task_tracker.model.ContainerClass;
 
 /** Stores basic information for a Task
  * 
@@ -124,5 +127,15 @@ public class Task {
 	@Override
 	public String toString() {
 		return this.name;
+	}
+	
+	public ContainerClass addTask(Task currTask) {
+		ContainerClass container = new ContainerClass(this.name, this.description, this.priority);
+		container.addTask(currTask);
+		return container;
+	}
+	
+	public ArrayList<Task> getSubTask(){
+		return new ArrayList<Task>();
 	}
 }

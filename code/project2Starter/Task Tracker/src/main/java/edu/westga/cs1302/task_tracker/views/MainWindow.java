@@ -36,6 +36,7 @@ public class MainWindow {
     @FXML private TextField selectedPriority;
     @FXML private ListView<Task> tasks;
     @FXML private ComboBox<Comparator<Task>> order;
+    @FXML private ListView<Task> subTask;
 
     /** Add a new task with the provided information to the listview.
      * 
@@ -138,6 +139,15 @@ public class MainWindow {
     		this.tasks.getItems().sort(this.order.getValue());
    		}
     
+    }
+    
+    @FXML
+    void displaySubTask(ActionEvent event) {
+    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+    	if (selectedTask != null) {
+    		this.subTask.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
+    	}
+    	
     }
 
     /** Perform any needed initialization of UI components and underlying objects.
