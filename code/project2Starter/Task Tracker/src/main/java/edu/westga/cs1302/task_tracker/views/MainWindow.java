@@ -3,6 +3,7 @@ package edu.westga.cs1302.task_tracker.views;
 import java.util.Comparator;
 
 import edu.westga.cs1302.task_tracker.model.Ascending;
+import edu.westga.cs1302.task_tracker.model.ContainerClass;
 import edu.westga.cs1302.task_tracker.model.Descending;
 import edu.westga.cs1302.task_tracker.model.SortByNameDescending;
 import edu.westga.cs1302.task_tracker.model.SortByNameAscending;
@@ -128,7 +129,7 @@ public class MainWindow {
     /** Sort tasks based on the selected ordering.
      * 
      * @precondition none
-     * @postcondition tasks in the listview are sorted based on the provided ordering.
+     * @postcondition tasks in the listView are sorted based on the provided ordering.
      * 
      * @param event we will not use this parameter, only here due to JavaFX Library requirement
      */
@@ -143,11 +144,35 @@ public class MainWindow {
     
     @FXML
     void displaySubTask(ActionEvent event) {
+
     	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
-    	if (selectedTask != null) {
-    		this.subTask.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
-    	}
+    	ContainerClass task = new ContainerClass(this.name.getText(), this.description.getText(), this.priority.getValue());
     	
+    	if (selectedTask != null) {
+    		selectedTask = task;
+    		this.tasks.getItems().set(0, task);
+    		
+    		//this.tasks.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
+    		
+    	}
+    }
+    
+    @FXML
+    void addSubTask(ActionEvent event) {
+    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+    	int index = this.tasks.getSelectionModel().getSelectedIndex();
+    	ContainerClass task = new ContainerClass(this.name.getText(), this.description.getText(), this.priority.getValue());
+    	Task subTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+    	if (selectedTask != null) {
+    		this.subTask.getItems().clear();
+    		if (index > 0) {
+    			ContainerClass updated = selectedTask.addTask(subTask);
+    			this.tasks.getItems().set(index, updated);    		
+    		}
+    		selectedTask.addTask(subTask);
+    		this.subTask.getItems().add(selectedTask);
+    		
+    	}
     }
 
     /** Perform any needed initialization of UI components and underlying objects.

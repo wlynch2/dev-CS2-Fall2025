@@ -1,5 +1,6 @@
 package edu.westga.cs1302.task_tracker.model;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.westga.cs1302.task_tracker.model.ContainerClass;
 
@@ -39,7 +40,7 @@ public class Task {
 	}
 	
 	private String description;
-	private final String name;
+	protected final String name;
 	private final TaskPriority priority;
 	
 	/** Create a new Task with the provided information.
@@ -129,13 +130,32 @@ public class Task {
 		return this.name;
 	}
 	
+	/** method meant to add a subTask to the current task
+	 * 
+	 * 
+	 * @Precondition currTask cannot be null
+	 * @postcondition none
+	 * 
+	 * @param currTask the task you want to add a subTask for
+	 * @return a container object
+	 */
 	public ContainerClass addTask(Task currTask) {
+		if (currTask == null) {
+			throw new IllegalArgumentException("currTask cannot be null");
+		}
 		ContainerClass container = new ContainerClass(this.name, this.description, this.priority);
 		container.addTask(currTask);
 		return container;
 	}
 	
-	public ArrayList<Task> getSubTask(){
+	/**gets the list of subTask
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return an arrayList of task objects
+	 */
+	public List<Task> getSubTask() {
 		return new ArrayList<Task>();
 	}
 }
