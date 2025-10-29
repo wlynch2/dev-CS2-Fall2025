@@ -75,6 +75,7 @@ public class MainWindow {
     	if (selectedTask != null) {
     		this.selectedPriority.setText(selectedTask.getPriority().toString());
     		this.selectedDescription.setText(selectedTask.getDescription());
+    		this.showSubTask(selectedTask);
     	}
     }
 
@@ -143,36 +144,34 @@ public class MainWindow {
     }
     
     @FXML
-    void displaySubTask(ActionEvent event) {
-
-    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
-    	ContainerClass task = new ContainerClass(this.name.getText(), this.description.getText(), this.priority.getValue());
-    	
-    	if (selectedTask != null) {
-    		selectedTask = task;
-    		this.tasks.getItems().set(0, task);
-    		
-    		//this.tasks.getItems().add(new Task(this.name.getText(), this.description.getText(), this.priority.getValue()));
-    		
-    	}
-    }
-    
-    @FXML
     void addSubTask(ActionEvent event) {
     	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
     	int index = this.tasks.getSelectionModel().getSelectedIndex();
-    	ContainerClass task = new ContainerClass(this.name.getText(), this.description.getText(), this.priority.getValue());
-    	Task subTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+ 	
     	if (selectedTask != null) {
-    		this.subTask.getItems().clear();
-    		if (index > 0) {
+    		if (index >= 0) {
+    			Task subTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
     			ContainerClass updated = selectedTask.addTask(subTask);
-    			this.tasks.getItems().set(index, updated);    		
-    		}
-    		selectedTask.addTask(subTask);
-    		this.subTask.getItems().add(selectedTask);
-    		
+    			this.tasks.getItems().set(index, updated);
+    			this.subTask.getItems().clear();
+    			for (Task currTask : updated.getSubTask()) {
+    				this.subTask.getItems().add(currTask);
+    			}
+    		}		
     	}
+    }
+    
+    /**
+     * 
+     */
+    void showSubTask(Task selectedTask) {
+    	this.subTask.getItems().clear();
+
+        if (selectedTask != null) {
+            for (Task currTask : selectedTask.getSubTask()) {
+                this.subTask.getItems().add(currTask);
+            }
+        }
     }
 
     /** Perform any needed initialization of UI components and underlying objects.
