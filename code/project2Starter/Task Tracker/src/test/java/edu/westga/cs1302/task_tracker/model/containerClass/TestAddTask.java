@@ -1,4 +1,4 @@
-package edu.westga.cs1302.task_tracker.model.task;
+package edu.westga.cs1302.task_tracker.model.containerClass;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,24 +9,23 @@ import edu.westga.cs1302.task_tracker.model.Task;
 import edu.westga.cs1302.task_tracker.model.Task.TaskPriority;
 
 public class TestAddTask {
+	
 	@Test
 	void testWhenCurrTaskIsNull() {
-		Task mainTask = new Task("give", "me", TaskPriority.HIGH);
-		
-		
-		assertThrows(IllegalArgumentException.class, ()->{
+		Task mainTask = new Task("1", "2", TaskPriority.HIGH);
+		assertThrows(IllegalArgumentException.class,()->{
 			mainTask.addTask(null);
 		});
 	}
 	
 	@Test
 	void testWhenASubTaskIsAdded() {
-		Task mainTask = new Task("hi", "dr", TaskPriority.HIGH);
-		Task subTask = new Task("Corley", "Please", TaskPriority.MEDIUM);
+		Task mainTask = new Task("1", "2", TaskPriority.HIGH);
+		Task subTask = new Task("3", "4",  TaskPriority.MEDIUM);
 		
-		ContainerClass result = mainTask.addTask(subTask);
+		ContainerClass container = mainTask.addTask(subTask);
 		
-		assertTrue(result.getSubTask().contains(subTask));
+		assertTrue(container.getSubTask().contains(subTask));
 	}
 	
 	@Test
@@ -81,5 +80,5 @@ public class TestAddTask {
 		
 	}
 	
-
+	
 }
