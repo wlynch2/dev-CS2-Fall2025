@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**class meant to take a task object and add subtask to it and store said subtask in a
- * seperate list, but still connected to said task object
+ * separate list, but still connected to said task object
  * 
  * @author wlynch2
  * @version CS1302
@@ -13,9 +13,25 @@ public class ContainerClass extends Task {
 	
 	private ArrayList<Task> subTask;
 	
+	/** Constructor for ContainerClass class, also has its parents Constructor
+	 * 
+	 * @param name the name of the replaced task
+	 * @param description the description of the replaced task
+	 * @param priority the priority of the replaced task
+	 */
 	public ContainerClass(String name, String description, TaskPriority priority) {
-	
 		super(name, description, priority);
+		
+		if (name == null) {
+			throw new IllegalArgumentException("name cannot be null");
+		}
+		if (description == null) {
+			throw new IllegalArgumentException("description cannot be null");
+		}
+		if (priority == null) {
+			throw new IllegalArgumentException("priority cannot be null");
+		}
+		
 		this.subTask = new ArrayList<Task>();
 	}
 	

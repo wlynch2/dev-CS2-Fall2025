@@ -33,8 +33,9 @@
       <Button layoutX="286.0" layoutY="390.0" mnemonicParsing="false" onAction="#updateDescription" text="Update Description" />
       <Label layoutX="37.0" layoutY="394.0" text="Sort Tasks" />
       <ComboBox fx:id="order" layoutX="95.0" layoutY="392.0" onAction="#sortTasks" prefHeight="25.0" prefWidth="128.0" />
-      <ListView fx:id="subTask" layoutX="16.0" layoutY="440.0" prefHeight="155.0" prefWidth="150.0" />
+      <ListView fx:id="subTask" layoutX="14.0" layoutY="453.0" prefHeight="155.0" prefWidth="150.0" />
       <Button layoutX="243.0" layoutY="148.0" mnemonicParsing="false" onAction="#addSubTask" text="Add SubTask" />
-      <Label layoutX="182.0" layoutY="440.0" text="Sub Task" />
+      <Label layoutX="14.0" layoutY="428.0" text="Sub Task" />
+      <Button layoutX="180.0" layoutY="570.0" mnemonicParsing="false" onAction="#displaySubTask" text="Display Sub Task" />
    </children>
 </AnchorPane>

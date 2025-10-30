@@ -143,6 +143,13 @@ public class MainWindow {
     
     }
     
+    /** This method is meant to take the currently selected task and its current index than replace the currently selected task with 
+     * a ContainerClass object. it will then iterate through each item in the new ContairnerClassObject and add any subTask
+     * this iteration will not work without the helper method i made that basically does the same logic i couldn't figure out how to get it
+     * working on its own but both methods are dependent on each other for the logic to work which is an accidental complexity.
+     * 
+     * @param event the action button that triggers this logic
+     */
     @FXML
     void addSubTask(ActionEvent event) {
     	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
@@ -161,10 +168,32 @@ public class MainWindow {
     	}
     }
     
-    /**
+    
+    /** This method is meant to take the currently selected task in the subTask ListView and show its name description and priority 
+     *  in an alert pop up
      * 
+     * 
+     * @param event the action button that triggers this logic
+     */
+    @FXML
+    void displaySubTask(ActionEvent event) {
+    	Task selectedTask = this.subTask.getSelectionModel().getSelectedItem();
+    	if (selectedTask != null) {
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setContentText("Name: " + selectedTask.getName() + "\nDescription: " + selectedTask.getDescription() + "\nPriority: " + selectedTask.getPriority());
+    		alert.showAndWait();
+    	}
+    }
+    
+    /** helper method that is used to populate the subTask list with new objects while
+     *  while clearing it so when a new object is selected the previous items don't overlap
+     * 
+     * @param selectedTask used to iterate through a list of task objects
      */
     void showSubTask(Task selectedTask) {
+    	if (selectedTask == null) {
+    		throw new IllegalArgumentException("selectedTask cannot be null");
+    	}
     	this.subTask.getItems().clear();
 
         if (selectedTask != null) {
