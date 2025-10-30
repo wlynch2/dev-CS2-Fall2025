@@ -2,13 +2,23 @@ package edu.westga.cs1302.task_tracker.model;
 
 import java.util.Comparator;
 
-/** sorts the list items by name
+/** Compare two Tasks to identify the correct Ascending ordering of the tasks based by name
  * 
  * @author wlynch2
  * @version CS1302
  */
 public class SortByNameDescending implements Comparator<Task> {
 
+	/** Returns a value indicating ordering of the two tasks based 
+	 *  on Descending name values.
+	 * 
+	 * @precondition o1 && o2 != null
+	 * @postcondition none
+	 * 
+	 * return 0 if o1 == 0 o2
+	 *        -1 if o1 > o2
+	 *        1 if o1 < o2
+	 */
 	@Override
 	public int compare(Task o1, Task o2) {
 		if (o1 == null) {
@@ -29,6 +39,13 @@ public class SortByNameDescending implements Comparator<Task> {
 		return result;
 	}
 	
+	/** Returns the name of the task to represent the task as a String
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return the name of the task
+	 */
 	@Override
 	public String toString() {
 		return "A-Z";

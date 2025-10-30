@@ -92,6 +92,7 @@ public class MainWindow {
     	if (selectedTask != null) {
     		this.tasks.getItems().remove(selectedTask);
     		this.tasks.getItems().sort(this.order.getValue());
+    		this.subTask.getItems().clear();
     	}
     }
 
@@ -108,7 +109,6 @@ public class MainWindow {
     	if (selectedTask != null) {
     		selectedTask.setDescription(this.selectedDescription.getText());
     		this.tasks.getItems().sort(this.order.getValue());
-    		
     	}
     	
     }
@@ -152,19 +152,25 @@ public class MainWindow {
      */
     @FXML
     void addSubTask(ActionEvent event) {
-    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
-    	int index = this.tasks.getSelectionModel().getSelectedIndex();
- 	
-    	if (selectedTask != null) {
-    		if (index >= 0) {
-    			Task subTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
-    			ContainerClass updated = selectedTask.addTask(subTask);
-    			this.tasks.getItems().set(index, updated);
-    			this.subTask.getItems().clear();
-    			for (Task currTask : updated.getSubTask()) {
-    				this.subTask.getItems().add(currTask);
-    			}
-    		}		
+    	try {
+	    	Task selectedTask = this.tasks.getSelectionModel().getSelectedItem();
+	    	int index = this.tasks.getSelectionModel().getSelectedIndex();
+	 	
+	    	if (selectedTask != null) {
+	    		if (index >= 0) {
+	    			Task subTask = new Task(this.name.getText(), this.description.getText(), this.priority.getValue());
+	    			ContainerClass updated = selectedTask.addTask(subTask);
+	    			this.tasks.getItems().set(index, updated);
+	    			this.subTask.getItems().clear();
+	    			for (Task currTask : updated.getSubTask()) {
+	    				this.subTask.getItems().add(currTask);
+	    			}
+	    		}		
+	    	}
+    	} catch (IllegalArgumentException error) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setContentText(error.getMessage());
+    		alert.showAndWait();
     	}
     }
     
@@ -184,6 +190,7 @@ public class MainWindow {
     		alert.showAndWait();
     	}
     }
+    
     
     /** helper method that is used to populate the subTask list with new objects while
      *  while clearing it so when a new object is selected the previous items don't overlap

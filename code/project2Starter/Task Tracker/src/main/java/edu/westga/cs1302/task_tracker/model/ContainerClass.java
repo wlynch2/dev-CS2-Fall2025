@@ -15,6 +15,9 @@ public class ContainerClass extends Task {
 	
 	/** Constructor for ContainerClass class, also has its parents Constructor
 	 * 
+	 * @precondition name && description && priority cannot be null
+	 * @postcondition none
+	 * 
 	 * @param name the name of the replaced task
 	 * @param description the description of the replaced task
 	 * @param priority the priority of the replaced task
@@ -68,7 +71,7 @@ public class ContainerClass extends Task {
 	
 	/** Overrides java built in toString method
 	 * 
-	 * @return a String
+	 * @return the name of the task object
 	 */
 	@Override
 	public String toString() {

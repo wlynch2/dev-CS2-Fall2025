@@ -23,10 +23,10 @@
       <Label layoutX="257.0" layoutY="178.0" text="Priority" />
       <TextField fx:id="selectedPriority" editable="false" layoutX="257.0" layoutY="201.0" prefHeight="25.0" prefWidth="177.0" />
       <ComboBox fx:id="priority" layoutX="30.0" layoutY="94.0" prefWidth="150.0" />
-      <Button layoutX="174.0" layoutY="505.0" mnemonicParsing="false" onAction="#countPriorities" text="Count Priorities" />
-      <Label layoutX="295.0" layoutY="509.0" text="High: " />
-      <Label layoutX="345.0" layoutY="509.0" text="Medium: " />
-      <Label layoutX="404.0" layoutY="509.0" text="Low: " />
+      <Button layoutX="174.0" layoutY="453.0" mnemonicParsing="false" onAction="#countPriorities" text="Count Priorities" />
+      <Label layoutX="287.0" layoutY="457.0" text="High: " />
+      <Label layoutX="320.0" layoutY="457.0" text="Medium: " />
+      <Label layoutX="379.0" layoutY="457.0" text="Low: " />
       <Label fx:id="highCount" layoutX="196.0" layoutY="402.0" />
       <Label fx:id="mediumCount" layoutX="310.0" layoutY="402.0" />
       <Label fx:id="lowCount" layoutX="393.0" layoutY="404.0" />
@@ -36,6 +36,6 @@
       <ListView fx:id="subTask" layoutX="14.0" layoutY="453.0" prefHeight="155.0" prefWidth="150.0" />
       <Button layoutX="243.0" layoutY="148.0" mnemonicParsing="false" onAction="#addSubTask" text="Add SubTask" />
       <Label layoutX="14.0" layoutY="428.0" text="Sub Task" />
-      <Button layoutX="180.0" layoutY="570.0" mnemonicParsing="false" onAction="#displaySubTask" text="Display Sub Task" />
+      <Button layoutX="175.0" layoutY="493.0" mnemonicParsing="false" onAction="#displaySubTask" text="Display Sub Task" />
    </children>
 </AnchorPane>

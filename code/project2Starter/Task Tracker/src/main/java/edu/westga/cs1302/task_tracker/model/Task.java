@@ -1,8 +1,8 @@
 package edu.westga.cs1302.task_tracker.model;
-import java.util.ArrayList;
-import java.util.List;
 
-import edu.westga.cs1302.task_tracker.model.ContainerClass;
+import java.util.ArrayList;
+
+import java.util.List;
 
 /** Stores basic information for a Task
  * 
@@ -39,8 +39,10 @@ public class Task {
 		}
 	}
 	
-	private String description;
 	protected final String name;
+	
+	private String description;
+	
 	private final TaskPriority priority;
 	
 	/** Create a new Task with the provided information.
@@ -137,7 +139,8 @@ public class Task {
 	 * @postcondition none
 	 * 
 	 * @param currTask the task you want to add a subTask for
-	 * @return a container object
+	 * 
+	 * @return a container object meant to hold task objects
 	 */
 	public ContainerClass addTask(Task currTask) {
 		if (currTask == null) {
