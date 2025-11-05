@@ -3,6 +3,9 @@ package edu.westga.cs1302.password_generator.viewmodel;
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,16 +28,43 @@ public class PasswordViewModel {
     private BooleanProperty includeDigits;
     private BooleanProperty includeLowerCase;
     private BooleanProperty includeUpperCase;
-    private IntegerProperty minimumLength;
+    private StringProperty minimumLength;
     private StringProperty generatedPassword;
     private StringProperty errorMessage;
     
-    public PasswordViewModel(BooleanProperty includeDigits, BooleanProperty includeLowerCase, BooleanProperty includeUpperCase ) {
-    	this.includeDigits = includeDigits;
-    	this.includeLowerCase = includeLowerCase;
-    	this.includeUpperCase = includeUpperCase;
+    public PasswordViewModel( ) {
+    	this.includeDigits = new SimpleBooleanProperty(false);
+    	this.includeLowerCase = new SimpleBooleanProperty(false);
+    	this.includeUpperCase = new SimpleBooleanProperty(false);
+    	this.minimumLength = new SimpleStringProperty("");
+    	this.generatedPassword = new SimpleStringProperty("");
+    	this.errorMessage = new SimpleStringProperty("");
+    	
     }
     
+    public BooleanProperty includeDigitsProperty() {
+    	return this.includeDigits;
+    }
+    
+    public BooleanProperty includeLowerCaseProperty() {
+    	return this.includeLowerCase;
+    }
+    
+    public BooleanProperty includeUpperCaseProperty() {
+    	return this.includeUpperCase;
+    }
+    
+    public StringProperty minimumLengthProperty() {
+    	return this.minimumLength;
+    }
+    
+    public StringProperty generatedPasswordProperty() {
+    	return this.generatedPassword;
+    }
+    
+    public StringProperty errorMessageProperty() {
+    	return this.errorMessage;
+    }
     
     public void generatePassword() {
     	int minimumLength = -1;

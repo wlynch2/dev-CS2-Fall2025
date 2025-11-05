@@ -24,13 +24,14 @@ public class MainWindow {
     @FXML private CheckBox mustIncludeUpperCaseLetters;
     @FXML private TextField minimumLength;
     @FXML private TextArea output;
+   
     
     private PasswordGenerator generator;
     private PasswordViewModel vm;
 
     @FXML
     void generatePassword(ActionEvent event) {
-    	
+    	vm.generatePassword();
     }
 
     @FXML
@@ -42,6 +43,15 @@ public class MainWindow {
         assert this.output != null : "fx:id=\"output\" was not injected: check your FXML file 'MainWindow.fxml'.";
         
         this.vm = new PasswordViewModel();
+        
+        this.mustIncludeDigits.selectedProperty().bindBidirectional(this.vm.includeDigitsProperty());
+        this.mustIncludeLowerCaseLetters.selectedProperty().bindBidirectional(this.vm.includeLowerCaseProperty());
+        this.mustIncludeUpperCaseLetters.selectedProperty().bindBidirectional(this.vm.includeUpperCaseProperty());
+        this.minimumLength.textProperty().bindBidirectional(this.vm.minimumLengthProperty());
+        this.output.textProperty().bindBidirectional(this.vm.generatedPasswordProperty());
+        
+       
+        
 
         this.minimumLength.setText("1");
         Random randomNumberGenerator = new Random();
