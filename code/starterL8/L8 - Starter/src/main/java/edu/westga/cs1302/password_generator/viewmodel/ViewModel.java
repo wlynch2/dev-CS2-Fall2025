@@ -1,12 +1,16 @@
 package edu.westga.cs1302.password_generator.viewmodel;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -18,6 +22,8 @@ public class ViewModel {
 	private BooleanProperty requireDigits;
 	private BooleanProperty requireLowercase;
 	private BooleanProperty requireUppercase;
+	
+	private ListProperty<PasswordGenerator> listOfPasswords;
 	
 	private StringProperty password;
 	private StringProperty errorText;
@@ -37,6 +43,16 @@ public class ViewModel {
 
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
+        
+        this.listOfPasswords = new SimpleListProperty<PasswordGenerator> (
+				FXCollections.observableArrayList(
+						new ArrayList<PasswordGenerator>()
+				)
+			);
+	}
+	
+	public ListProperty getListOfPassword() {
+		return this.listOfPasswords;
 	}
 
 	/** Return the minimum length property
@@ -86,6 +102,11 @@ public class ViewModel {
 	public StringProperty getErrorText() {
 		return this.errorText;
 	}
+	
+	public void fillList() throws IllegalArgumentException {
+		PasswordGenerator gen = this.generator;
+		this.listOfPasswords.getValue().add(gen);
+	}
 
 	/** Generates a password using the minimum length, require digit, require lower case, and require upper case property values.
 	 * 
@@ -96,6 +117,7 @@ public class ViewModel {
 	public void generatePassword() {
     	int minimumLength = -1;
     	this.password.setValue("");
+    	
     	
     	try {
     		minimumLength = Integer.parseInt(this.minimumLength.getValue());
@@ -118,6 +140,7 @@ public class ViewModel {
     	String password = this.generator.generatePassword();
     	
     	this.password.setValue(password);
+    	
     }
 
 }

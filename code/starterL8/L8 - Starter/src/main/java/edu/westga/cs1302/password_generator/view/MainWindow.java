@@ -11,6 +11,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
 
 /** Codebehind for the MainWindow of the Application.
  * 
@@ -26,6 +27,7 @@ public class MainWindow {
     @FXML private TextArea output;
     @FXML private Label errorTextLabel;
     @FXML private Button generatePasswordButton;
+    @FXML private ListView passwordsList;
     
 //    private StringProperty errorTxt;
     private ViewModel vm;
@@ -38,6 +40,7 @@ public class MainWindow {
     	this.vm.getRequireUppercase().bind(this.mustIncludeUpperCaseLetters.selectedProperty());
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
+    	this.vm.getListOfPassword().bind(this.passwordsList.getSelectionModel().selectedItemProperty());
     	
 //    	this.errorTxt = new SimpleStringProperty("");
 //    	this.errorTxt.bind(this.vm.getErrorText());
@@ -54,7 +57,11 @@ public class MainWindow {
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 
     				this.vm.generatePassword();
+    				
     			} 
     	);
     }
+    
+
+  
 }
