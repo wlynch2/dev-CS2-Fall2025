@@ -2,24 +2,18 @@ package edu.westga.cs1302.password_generator.viewmodel;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-import java.util.Random;
-
 /**
- * ViewModel for the MainWindow.
- * Handles business logic and state management.
+ * View model for the MainWindow.
+ * manages business logic
  * 
  * @author CS1302
- * @version Fall 2024
+ * @version Fall 2025
  */
 public class PasswordViewModel {
 
@@ -32,7 +26,10 @@ public class PasswordViewModel {
     private StringProperty generatedPassword;
     private StringProperty errorMessage;
     
-    public PasswordViewModel( ) {
+    /**
+     * constructor for view model assigns all the fields with a new property
+     */
+    public PasswordViewModel() {
     	this.includeDigits = new SimpleBooleanProperty(false);
     	this.includeLowerCase = new SimpleBooleanProperty(false);
     	this.includeUpperCase = new SimpleBooleanProperty(false);
@@ -42,30 +39,66 @@ public class PasswordViewModel {
     	
     }
     
+    /**
+     * getter for the include digits property
+     * 
+     * @return the boolean property includeDigits
+     */
     public BooleanProperty includeDigitsProperty() {
     	return this.includeDigits;
     }
     
+    /**
+     * getter for the  includeUpperCase property
+     * 
+     * @return the boolean property includeLowerCase
+     */
     public BooleanProperty includeLowerCaseProperty() {
     	return this.includeLowerCase;
     }
     
+    /**
+     * getter for the  includeUpperCase property
+     * 
+     * @return the boolean property includeUpperCase
+     */
     public BooleanProperty includeUpperCaseProperty() {
     	return this.includeUpperCase;
     }
     
+    /**
+     * getter for the  minimumLength property
+     * 
+     * @return the StringProperty property minimumLength
+     */
     public StringProperty minimumLengthProperty() {
     	return this.minimumLength;
     }
     
+    /**
+     * getter for the  generatedPassword property
+     * 
+     * @return the StringProperty property generatedPassword
+     */
     public StringProperty generatedPasswordProperty() {
     	return this.generatedPassword;
     }
     
+    /**
+     * getter for the  errorMessage property
+     * 
+     * @return the StringProperty property errorMessage
+     */
     public StringProperty errorMessageProperty() {
     	return this.errorMessage;
     }
     
+    /** method used to handle generating password for view
+     * 
+     * @precondition none
+     * @postcondition none
+     * 
+     */
     public void generatePassword() {
     	int minimumLength = -1;
     	
@@ -95,5 +128,5 @@ public class PasswordViewModel {
     	
     	this.generatedPassword.set(password);
     }
-   
+    
 }

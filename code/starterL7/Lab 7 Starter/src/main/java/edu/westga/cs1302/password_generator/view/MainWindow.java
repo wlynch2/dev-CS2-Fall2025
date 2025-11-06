@@ -6,8 +6,6 @@ import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import edu.westga.cs1302.password_generator.viewmodel.PasswordViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -25,13 +23,12 @@ public class MainWindow {
     @FXML private TextField minimumLength;
     @FXML private TextArea output;
    
-    
     private PasswordGenerator generator;
     private PasswordViewModel vm;
 
     @FXML
     void generatePassword(ActionEvent event) {
-    	vm.generatePassword();
+    	 this.vm.generatePassword();
     }
 
     @FXML
@@ -48,11 +45,8 @@ public class MainWindow {
         this.mustIncludeLowerCaseLetters.selectedProperty().bindBidirectional(this.vm.includeLowerCaseProperty());
         this.mustIncludeUpperCaseLetters.selectedProperty().bindBidirectional(this.vm.includeUpperCaseProperty());
         this.minimumLength.textProperty().bindBidirectional(this.vm.minimumLengthProperty());
-        this.output.textProperty().bindBidirectional(this.vm.generatedPasswordProperty());
+        this.output.textProperty().bind(this.vm.generatedPasswordProperty());
         
-       
-        
-
         this.minimumLength.setText("1");
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
