@@ -40,7 +40,7 @@ public class MainWindow {
     	this.vm.getRequireUppercase().bind(this.mustIncludeUpperCaseLetters.selectedProperty());
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
-    	this.vm.getListOfPassword().bind(this.passwordsList.getSelectionModel().selectedItemProperty());
+    	
     	
 //    	this.errorTxt = new SimpleStringProperty("");
 //    	this.errorTxt.bind(this.vm.getErrorText());
@@ -51,13 +51,14 @@ public class MainWindow {
 //    		}
 //    	}
     	
+    	
     	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
     	
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 
     				this.vm.generatePassword();
-    				
+    				this.passwordsList.itemsProperty().bind(this.vm.getListOfPassword());
     			} 
     	);
     }
