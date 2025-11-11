@@ -44,14 +44,18 @@ public class ViewModel {
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
         
-        this.listOfPasswords = new SimpleListProperty<String> (
+        this.listOfPasswords = new SimpleListProperty<String>(
 				FXCollections.observableArrayList(
 						new ArrayList<String>()
 				)
 			);
 	}
 	
-	public ListProperty getListOfPassword() {
+	/** Return the listItem from the generated Password
+	 * 
+	 * @return the listItem from the generated Password
+	 */
+	public ListProperty<String> getListOfPassword() {
 		return this.listOfPasswords;
 	}
 
@@ -102,11 +106,6 @@ public class ViewModel {
 	public StringProperty getErrorText() {
 		return this.errorText;
 	}
-	
-//	public void fillList() throws IllegalArgumentException {
-//		PasswordGenerator gen = this.generator;
-//		this.listOfPasswords.getValue().add(gen);
-//	}
 
 	/** Generates a password using the minimum length, require digit, require lower case, and require upper case property values.
 	 * 
@@ -117,7 +116,6 @@ public class ViewModel {
 	public void generatePassword() {
     	int minimumLength = -1;
     	this.password.setValue("");
-    	//PasswordGenerator gen = 
     	
     	try {
     		minimumLength = Integer.parseInt(this.minimumLength.getValue());
@@ -141,7 +139,6 @@ public class ViewModel {
     	
     	this.password.setValue(password);
     	this.listOfPasswords.add(password);
-    }
-	
+	}
 	
 }

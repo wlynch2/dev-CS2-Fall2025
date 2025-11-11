@@ -1,11 +1,9 @@
 package edu.westga.cs1302.password_generator.view;
 
 import edu.westga.cs1302.password_generator.viewmodel.ViewModel;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -29,7 +27,6 @@ public class MainWindow {
     @FXML private Button generatePasswordButton;
     @FXML private ListView passwordsList;
     
-//    private StringProperty errorTxt;
     private ViewModel vm;
     
     @FXML
@@ -41,17 +38,6 @@ public class MainWindow {
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
     	
-    	
-//    	this.errorTxt = new SimpleStringProperty("");
-//    	this.errorTxt.bind(this.vm.getErrorText());
-//    	this.errorTxt.addListener(obvserable, oldValue, newValue) -> {
-//    		if (newValue != null) {
-//    			Alert alert = new Alert(AlertType.ERROR);
-//    			ale
-//    		}
-//    	}
-    	
-    	
     	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
     	
@@ -62,7 +48,4 @@ public class MainWindow {
     			} 
     	);
     }
-    
-
-  
 }
