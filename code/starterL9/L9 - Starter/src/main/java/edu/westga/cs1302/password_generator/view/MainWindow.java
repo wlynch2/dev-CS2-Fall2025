@@ -8,8 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.MenuItem;
 
 /** Codebehind for the MainWindow of the Application.
  * 
@@ -26,6 +28,17 @@ public class MainWindow {
     @FXML private Label minLengthErrorText;
     @FXML private Button generatePasswordButton;
     @FXML private ListView<String> passwordHistory;
+    @FXML
+    private MenuItem openAbout;
+
+    @FXML
+    private MenuItem openClose;
+
+    @FXML
+    private MenuItem openSave;
+    
+    @FXML
+    private MenuBar fileActions;  
     
     private ViewModel vm;
     
@@ -49,6 +62,18 @@ public class MainWindow {
     			(event) -> { 
     				this.vm.generatePassword();
     			} 
+    	);
+    	
+    	this.openSave.setOnAction(
+    			(event) -> {
+    				this.vm.writePasswordInFile();
+    			}
+    	);
+    	
+    	this.openAbout.setOnAction(
+    			(event) -> {
+    				this.vm.showAboutInfo();
+    			}
     	);
     }
 }

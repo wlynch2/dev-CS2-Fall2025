@@ -1,5 +1,8 @@
 package edu.westga.cs1302.password_generator.viewmodel;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,6 +14,10 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -122,5 +129,34 @@ public class ViewModel {
     	
     	this.passwordHistory.add(password);
     }
+	
+	/**
+	 * 
+	 */
+	public void writePasswordInFile() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open .txt File");
+		fileChooser.getExtensionFilters().addAll(
+				new ExtensionFilter("TextFiles", "*.txt"));
+		
+		File selectedFile = fileChooser.showOpenDialog(null);
+		if (selectedFile != null) {
+			try (FileWriter writer = new FileWriter(selectedFile)) {
+				for (String password: this.passwordHistory) {
+					writer.write(password + System.lineSeparator());
+				}
+			} catch (IOException error) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText(error.getMessage());
+				alert.showAndWait();
+			}
+		}
+	}
+	
+	public void showAboutInfo() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText("William Lynch" + "\n" + "\nThis is used to generate passwords store them in a list and also add them to a text file" );
+		alert.showAndWait();
+	}
 
 }
