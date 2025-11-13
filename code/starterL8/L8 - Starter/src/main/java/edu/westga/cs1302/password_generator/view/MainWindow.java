@@ -22,7 +22,7 @@ public class MainWindow {
     @FXML private CheckBox mustIncludeLowerCaseLetters;
     @FXML private CheckBox mustIncludeUpperCaseLetters;
     @FXML private TextField minimumLength;
-    @FXML private TextArea output;
+   
     @FXML private Label errorTextLabel;
     @FXML private Button generatePasswordButton;
     @FXML private ListView passwordsList;
@@ -38,8 +38,12 @@ public class MainWindow {
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
     	
-    	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
+    	this.minimumLength.textProperty().addListener((observable, oldValue, newValue) -> {
+    		if (!newValue.matches("\\d*")) {
+    			this.minimumLength.setText(oldValue);
+    		}
+    	});
     	
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 

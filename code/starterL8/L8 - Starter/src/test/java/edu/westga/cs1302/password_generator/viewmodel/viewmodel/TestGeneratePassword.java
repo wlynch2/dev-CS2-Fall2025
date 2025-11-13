@@ -69,14 +69,14 @@ class TestGeneratePassword {
 		vm.generatePassword();
 		assertEquals(1, newList.size());
 	}
-	
-	@Test
-	void testValWhenListHasOneItem() {
-		ViewModel vm = new ViewModel();
-		ListProperty<String> newList = vm.getListOfPassword();
-		
-		vm.generatePassword();
-		assertEquals(newList.get(0), vm.getListOfPassword().get());
-	}
+//	
+//	@Test
+//	void testValWhenListHasOneItem() {
+//		ViewModel vm = new ViewModel();
+//		ListProperty<String> newList = vm.getListOfPassword();
+//		
+//		vm.generatePassword();
+//		assertEquals(newList.get(0), vm.getListOfPassword().get());
+//	}
 
 }

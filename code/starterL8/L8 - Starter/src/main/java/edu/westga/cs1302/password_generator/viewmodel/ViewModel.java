@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+//Add change listener to text field to validate input for minimum length
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -29,8 +30,8 @@ public class ViewModel {
 	private StringProperty errorText;
 	
     private PasswordGenerator generator;
-	
-	/** Initialize the properties for the viewmodel
+   
+	/** Initialize the properties for the viewModel
 	 */
 	public ViewModel() {
 		this.minimumLength = new SimpleStringProperty("1");
