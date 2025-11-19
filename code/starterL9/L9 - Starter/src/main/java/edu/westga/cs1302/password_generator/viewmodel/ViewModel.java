@@ -130,8 +130,10 @@ public class ViewModel {
     	this.passwordHistory.add(password);
     }
 	
-	/**
+	/** method used to write the generated passwords into a selected file
 	 * 
+	 * @precondition none
+	 * @postcondition none
 	 */
 	public void writePasswordInFile() {
 		FileChooser fileChooser = new FileChooser();
@@ -153,6 +155,11 @@ public class ViewModel {
 		}
 	}
 	
+	/** method that uses a alert window to tell the user what the program is about
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 */
 	public void showAboutInfo() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setContentText("William Lynch" + "\n" + "\nThis is used to generate passwords store them in a list and also add them to a text file" );

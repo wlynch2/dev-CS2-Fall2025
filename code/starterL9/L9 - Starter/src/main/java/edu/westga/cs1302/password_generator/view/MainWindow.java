@@ -2,6 +2,7 @@ package edu.westga.cs1302.password_generator.view;
 
 import edu.westga.cs1302.password_generator.viewmodel.ViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -44,6 +45,7 @@ public class MainWindow {
     
     @FXML
     void initialize() {
+    	
     	this.vm = new ViewModel();
     	this.vm.getRequireDigits().bind(this.mustIncludeDigits.selectedProperty());
     	this.vm.getRequireLowercase().bind(this.mustIncludeLowerCaseLetters.selectedProperty());
@@ -56,6 +58,7 @@ public class MainWindow {
     	
     	this.minimumLength.textProperty().addListener((observable, newValue, oldValue) -> {
     		this.minLengthErrorText.setVisible(!newValue.matches("\\d+") || Integer.parseInt(newValue) == 0);
+    		this.generatePasswordButton.setDisable(!newValue.matches("\\d+") || newValue.isEmpty() ||  Integer.parseInt(newValue) == 0);
     	});
     	
     	this.generatePasswordButton.setOnAction(
@@ -73,6 +76,12 @@ public class MainWindow {
     	this.openAbout.setOnAction(
     			(event) -> {
     				this.vm.showAboutInfo();
+    			}
+    	);
+    	
+      	this.openClose.setOnAction(
+    			(event) -> {
+    				((Node) (this.errorTextLabel)).getScene().getWindow().hide();
     			}
     	);
     }
