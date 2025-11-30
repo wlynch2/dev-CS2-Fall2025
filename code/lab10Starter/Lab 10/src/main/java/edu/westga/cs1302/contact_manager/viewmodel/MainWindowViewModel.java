@@ -100,6 +100,7 @@ public class MainWindowViewModel {
 			this.phoneNumberMap.put(contact.getPhoneNumber(), contact);
 			this.nameMap.put(contact.getName(), contact);
 			this.contacts.add(contact);
+			
 		} else {
 			throw new IllegalArgumentException("Cannot add duplicate contacts");
 		}
