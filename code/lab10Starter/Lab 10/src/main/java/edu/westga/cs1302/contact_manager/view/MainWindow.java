@@ -1,8 +1,6 @@
 package edu.westga.cs1302.contact_manager.view;
 
-import java.util.Map;
 
-import edu.westga.cs1302.contact_manager.model.Contact;
 import edu.westga.cs1302.contact_manager.viewmodel.MainWindowViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

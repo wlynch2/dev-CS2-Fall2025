@@ -6,13 +6,10 @@ import java.util.Map;
 
 import edu.westga.cs1302.contact_manager.model.Contact;
 import javafx.beans.property.ListProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.scene.control.Alert;
 
 /** View model for the MainWindow view
  * 
@@ -40,6 +37,28 @@ public class MainWindowViewModel {
 		this.contacts = new SimpleListProperty<Contact>(FXCollections.observableList(new ArrayList<Contact>()));
 		this.phoneNumberMap = new HashMap<String, Contact>();
 		this.nameMap = new HashMap<String, Contact>();
+	}
+	
+	/**return the phoneNumber map property when adding a contact
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return the map property of the phoneNumber used when adding a contact
+	 */
+	public Map<String, Contact> getPhoneNumberMap() {
+		return this.phoneNumberMap;
+	}
+	
+	/**return the name map property when adding a contact
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @return the map property of the name used when adding a contact
+	 */
+	public Map<String, Contact> getNameMap() {
+		return this.nameMap;
 	}
 	
 	/** Return the name property used when adding a contact
@@ -96,11 +115,10 @@ public class MainWindowViewModel {
 	public void addContact() throws IllegalArgumentException {
 		Contact contact = new Contact(this.name.get(), this.phoneNumber.get());
 		
-		if (!this.phoneNumberMap.containsKey(contact.getPhoneNumber()) || !this.nameMap.containsKey(contact.getName())) {
+		if (!this.phoneNumberMap.containsKey(contact.getPhoneNumber()) && !this.nameMap.containsKey(contact.getName())) {
 			this.phoneNumberMap.put(contact.getPhoneNumber(), contact);
 			this.nameMap.put(contact.getName(), contact);
 			this.contacts.add(contact);
-			
 		} else {
 			throw new IllegalArgumentException("Cannot add duplicate contacts");
 		}
