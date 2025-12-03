@@ -38,6 +38,7 @@ public class MainWindow {
 		
 		this.vm.getCollectionName().bind(this.collectionName.textProperty());
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
+		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		
 		this.addCollection.setOnAction((event) -> {
 			this.vm.addItem();
