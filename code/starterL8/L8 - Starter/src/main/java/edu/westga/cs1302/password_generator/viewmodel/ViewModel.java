@@ -45,7 +45,7 @@ public class ViewModel {
 	 * 
 	 * @return selectedCollection the objectProperty item that is currently selected
 	 */
-	public ObjectProperty<CollectionsData> getSelectedItem(){
+	public ObjectProperty<CollectionsData> getSelectedItem() {
 		return this.selectedCollection;
 	}
 	

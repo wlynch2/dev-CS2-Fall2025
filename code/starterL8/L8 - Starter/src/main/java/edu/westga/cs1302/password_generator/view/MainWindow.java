@@ -17,9 +17,15 @@ import javafx.scene.control.TextField;
 public class MainWindow {
 	@FXML
 	private Button addCollection;
+	
+	@FXML
+	private Button addComicButton;
 
 	@FXML
 	private ListView<CollectionsData> listOfCollections;
+	
+	@FXML
+	private ListView<?> comicsListView;
 	 
 	@FXML
 	private ContextMenu collectionMenu;
@@ -30,6 +36,9 @@ public class MainWindow {
 	@FXML
     private Button removeCollections;
 	
+    @FXML
+    private Button removeComicButton;
+	
 	private ViewModel vm;
 	
 	@FXML
@@ -39,6 +48,10 @@ public class MainWindow {
 		this.vm.getCollectionName().bind(this.collectionName.textProperty());
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
 		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
+		
+		this.collectionName.textProperty().addListener((observable, oldValue, newValue) -> {
+			this.addCollection.setVisible(!newValue.isEmpty());
+		});
 		
 		this.addCollection.setOnAction((event) -> {
 			this.vm.addItem();

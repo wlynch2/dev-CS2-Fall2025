@@ -1,5 +1,7 @@
 package edu.westga.cs1302.password_generator.model;
 
+import java.util.ArrayList;
+
 /**
  * Generates a random password based on the characteristics required.
  * 
@@ -10,7 +12,9 @@ public class CollectionsData {
 	
 	private String name;
 	
-	/** constructor for CollectionsDataClass that assigns the field to a paramater
+	private ArrayList<Comics> comicCollection;
+	
+	/** constructor for CollectionsDataClass that assigns the field to a parameter
 	 * 
 	 * @param name the item being stored
 	 */
@@ -20,6 +24,7 @@ public class CollectionsData {
 		}
 		
 		this.name = name;
+		this.comicCollection = new ArrayList<Comics>();
 	}
 
 	/** getter method for CollectionsDataClass
@@ -28,6 +33,29 @@ public class CollectionsData {
 	 */
 	public String getName() {
 		return this.name;
+	}
+	
+	/** getter method for comicCollection
+	 * 
+	 * @return an arrayList of comics
+	 */
+	public ArrayList<Comics> getComicCollection(){
+		return this.comicCollection;
+	}
+	
+	/** method meant to add a selected comic to the list of comics
+	 * 
+	 * @precondition comic != null
+	 * @postcondition none
+	 * 
+	 * @param comic a comic with a title and a issue number
+	 */
+	public void addComic(Comics comic) {
+		if (comic == null) {
+			throw new IllegalArgumentException("comic cannot be null");
+		}
+		
+		this.comicCollection.add(comic);
 	}
 	
 	@Override
