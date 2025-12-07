@@ -21,7 +21,6 @@ public class OptionsWindow {
     
     private OptionsWindowViewModel vm;
     
-    
     @FXML
     void initialize() {
     	this.vm = new OptionsWindowViewModel();
@@ -33,5 +32,8 @@ public class OptionsWindow {
     		this.vm.addComic();
     	});
     	
+    	this.cancelAdd.setOnAction((event) -> {
+    		this.vm.removeComic();
+    	});
     }
 }

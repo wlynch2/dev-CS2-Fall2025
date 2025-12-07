@@ -49,7 +49,7 @@ public class Comics {
 	
 	@Override
 	public String toString() {
-		return this.title;
+		return this.title + this.issueNumber;
 	}
 }
 

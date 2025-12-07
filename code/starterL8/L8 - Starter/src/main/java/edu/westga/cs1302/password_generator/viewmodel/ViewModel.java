@@ -81,7 +81,9 @@ public class ViewModel {
 	 */
 	public void removeItem() {
 		CollectionsData data = this.selectedCollection.get();
-		this.collectionList.remove(data);
+		if (data != null) {
+			this.collectionList.remove(data);
+		}
 	}
 	
 }

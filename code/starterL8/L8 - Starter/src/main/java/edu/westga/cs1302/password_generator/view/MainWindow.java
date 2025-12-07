@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import edu.westga.cs1302.password_generator.Main;
 import edu.westga.cs1302.password_generator.model.CollectionsData;
+import edu.westga.cs1302.password_generator.model.Comics;
+import edu.westga.cs1302.password_generator.viewmodel.OptionsWindowViewModel;
 import edu.westga.cs1302.password_generator.viewmodel.ViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
@@ -36,7 +39,7 @@ public class MainWindow {
 	private ListView<CollectionsData> listOfCollections;
 	
 	@FXML
-	private ListView<?> comicsListView;
+	private ListView<Comics> comicsListView;
 	 
 	@FXML
 	private ContextMenu collectionMenu;
@@ -49,16 +52,26 @@ public class MainWindow {
 	
     @FXML
     private Button removeComicButton;
+    
+    @FXML
+    private MenuItem removebuttonContext;
+   
+    @FXML
+    private Button setComic;
 	
 	private ViewModel vm;
+	private OptionsWindowViewModel vm2;
 	
 	@FXML
 	void initialize() {
 		this.vm = new ViewModel();
+		this.vm2 = new OptionsWindowViewModel();
 		
 		this.vm.getCollectionName().bind(this.collectionName.textProperty());
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
 		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
+		this.comicsListView.setItems(this.vm2.getListOfComicsProperty());
+		this.vm2.getSelectedComic().bind(this.comicsListView.getSelectionModel().selectedItemProperty());
 		
 		this.collectionName.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.addCollection.setVisible(!newValue.isEmpty());
@@ -71,12 +84,20 @@ public class MainWindow {
 		this.removeCollections.setOnAction((event) -> {
 			this.vm.removeItem();
 		});
+		
+		this.removebuttonContext.setOnAction((event) -> {
+			this.vm.removeItem();
+		});
+		
+		this.addComicButton.setOnAction((event) -> {
+			this.openOptionsWindow(event);
+		});
 	}
 	
 	@FXML
 	void openOptionsWindow(ActionEvent event) {
     	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(Main.class.getResource(Main.GUI_RESOURCE2));
+    	loader.setLocation(Main.class.getResource("/edu/westga/cs1302/password_generator/view/OptionsWindow.fxml"));
     	try {
 			loader.load();
 	    	Parent parent = loader.getRoot();
@@ -85,8 +106,8 @@ public class MainWindow {
 	    	optionsWindow.setTitle("");
 	    	optionsWindow.setScene(scene);
 	    	optionsWindow.initModality(Modality.APPLICATION_MODAL);
+	    	//OptionsWindow controller = (OptionsWindow) loader.getController();
 	    	
-	    	OptionsWindow controller = (OptionsWindow) loader.getController();
 	    	optionsWindow.showAndWait();
 		} catch (IOException error) {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -98,5 +119,4 @@ public class MainWindow {
 			alert.showAndWait();
 		}
 	}
-
 }
