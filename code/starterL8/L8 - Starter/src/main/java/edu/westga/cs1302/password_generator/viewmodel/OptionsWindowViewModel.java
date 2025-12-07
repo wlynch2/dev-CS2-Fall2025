@@ -44,9 +44,7 @@ public class OptionsWindowViewModel {
 	}
 	
 	public void addComic() {
-		int newIssuedNumber = Integer.parseInt(this.issueNumberProperty.get());
-		Comics comic = new Comics(this.comicTitleProperty.get(), newIssuedNumber);
-		
+		Comics comic = new Comics(this.comicTitleProperty.get(), Integer.parseInt(this.issueNumberProperty.get()));
 		this.listOfComicsProperty.add(comic);
 	}
 	

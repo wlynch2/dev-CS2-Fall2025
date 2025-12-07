@@ -62,6 +62,7 @@ public class MainWindow {
 	private ViewModel vm;
 	private OptionsWindowViewModel vm2;
 	
+	
 	@FXML
 	void initialize() {
 		this.vm = new ViewModel();
@@ -92,6 +93,10 @@ public class MainWindow {
 		this.addComicButton.setOnAction((event) -> {
 			this.openOptionsWindow(event);
 		});
+		
+		this.removeComicButton.setOnAction((event) -> {
+			this.vm2.removeComic();
+		});
 	}
 	
 	@FXML
@@ -106,7 +111,8 @@ public class MainWindow {
 	    	optionsWindow.setTitle("");
 	    	optionsWindow.setScene(scene);
 	    	optionsWindow.initModality(Modality.APPLICATION_MODAL);
-	    	//OptionsWindow controller = (OptionsWindow) loader.getController();
+	    	OptionsWindow controller = (OptionsWindow) loader.getController();
+	    	controller.setViewModel(this.vm2);
 	    	
 	    	optionsWindow.showAndWait();
 		} catch (IOException error) {
