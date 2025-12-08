@@ -1,8 +1,10 @@
 package edu.westga.cs1302.password_generator.view;
 
+import edu.westga.cs1302.password_generator.model.CollectionsData;
 import edu.westga.cs1302.password_generator.model.Comics;
 import edu.westga.cs1302.password_generator.viewmodel.OptionsWindowViewModel;
 import edu.westga.cs1302.password_generator.viewmodel.ViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -23,13 +25,13 @@ public class OptionsWindow {
     private TextField issueNumber;
     
     private OptionsWindowViewModel vm;
+    private ViewModel vm2;
     
     @FXML
     void initialize() {
-    	
    
     }
-    	
+    
     public void setViewModel(OptionsWindowViewModel vm) {
     	if (vm == null) {
     		throw new IllegalArgumentException("vm cannot be null");
@@ -41,13 +43,14 @@ public class OptionsWindow {
     	this.vm.getIssueNumberProperty().bindBidirectional((this.issueNumber.textProperty()));
     	
     	this.confirmAdd.setOnAction((event) -> {
+
     		this.vm.addComic();
+    		
     	});
     	
     	this.cancelAdd.setOnAction((event) -> {
     		((Node) (this.comicTitle)).getScene().getWindow().hide();
     	});
     }
-    
   
 }

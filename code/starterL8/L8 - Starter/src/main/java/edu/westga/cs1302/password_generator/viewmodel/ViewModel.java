@@ -2,6 +2,7 @@ package edu.westga.cs1302.password_generator.viewmodel;
 
 import java.util.ArrayList;
 import edu.westga.cs1302.password_generator.model.CollectionsData;
+import edu.westga.cs1302.password_generator.model.Comics;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -19,6 +20,7 @@ public class ViewModel {
 	private StringProperty collectionName;
 	private ObjectProperty<CollectionsData> selectedCollection;
 	private ListProperty<CollectionsData> collectionList;
+	private ListProperty<Comics> comicsList;
 	
 	/**
 	 * constructor for ViewModel initializes all the fields as simpleProperties
@@ -27,6 +29,7 @@ public class ViewModel {
 		this.collectionName = new SimpleStringProperty("");
 		this.selectedCollection = new SimpleObjectProperty<>();
 		this.collectionList = new SimpleListProperty<CollectionsData>(FXCollections.observableArrayList(new ArrayList<CollectionsData>()));
+		this.comicsList =  new SimpleListProperty<Comics>(FXCollections.observableArrayList(new ArrayList<Comics>()));
 	}
 	
 	/** getter method to get the name of the object 
@@ -59,6 +62,10 @@ public class ViewModel {
 		return this.collectionList;
 	}
 	
+	public ListProperty<Comics> getComics(){
+		return this.comicsList;
+	}
+	
 	/** method used to add a item to the current list 
 	 * creates a ColectionsData object and assigns it the value of the 
 	 * collectionName String property than adds that data to the list
@@ -71,6 +78,8 @@ public class ViewModel {
 		this.collectionList.add(data);
 		
 	}
+	
+
 	
 	/** method used to remove the currently selected item from the list
 	 *  creates a CollectionsData object assigns the value of the selectedCollection

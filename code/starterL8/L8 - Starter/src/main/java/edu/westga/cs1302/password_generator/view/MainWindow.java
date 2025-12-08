@@ -18,6 +18,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -55,9 +56,9 @@ public class MainWindow {
     
     @FXML
     private MenuItem removebuttonContext;
-   
+    
     @FXML
-    private Button setComic;
+    private Button comicsWindow;
 	
 	private ViewModel vm;
 	private OptionsWindowViewModel vm2;
@@ -72,7 +73,8 @@ public class MainWindow {
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
 		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		this.comicsListView.setItems(this.vm2.getListOfComicsProperty());
-		this.vm2.getSelectedComic().bind(this.comicsListView.getSelectionModel().selectedItemProperty());
+		//this.vm2.getSelectedComic().bind(this.comicsListView.getSelectionModel().selectedItemProperty());
+		this.vm2.getSelectedComic().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		
 		this.collectionName.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.addCollection.setVisible(!newValue.isEmpty());
@@ -91,12 +93,25 @@ public class MainWindow {
 		});
 		
 		this.addComicButton.setOnAction((event) -> {
-			this.openOptionsWindow(event);
+			
 		});
 		
-		this.removeComicButton.setOnAction((event) -> {
-			this.vm2.removeComic();
+		this.comicsWindow.setOnAction((event) -> {
+			
+			this.openOptionsWindow(event);
+			
 		});
+		
+		this.listOfCollections.setOnMouseClicked((event) -> {
+			CollectionsData selected = this.listOfCollections.getSelectionModel().getSelectedItem();
+			if (selected != null) {
+				this.vm2.showComics();
+			}
+		});
+		
+//		this.removeComicButton.setOnAction((event) -> {
+//			this.vm2.removeComic();
+//		});
 	}
 	
 	@FXML
