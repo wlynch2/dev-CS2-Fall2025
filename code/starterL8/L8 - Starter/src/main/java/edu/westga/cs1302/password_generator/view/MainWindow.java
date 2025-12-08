@@ -71,6 +71,7 @@ public class MainWindow {
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
 		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		this.comicsListView.setItems(this.vm2.getListOfComicsProperty());
+		this.vm2.getSelectedComic().bind(this.comicsListView.getSelectionModel().selectedItemProperty());
 		
 		this.vm2.getSelectedCollection().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		
@@ -84,6 +85,8 @@ public class MainWindow {
 		
 		this.removeCollections.setOnAction((event) -> {
 			this.vm.removeItem();
+			this.comicsListView.getItems().clear();
+			
 		});
 		
 		this.removebuttonContext.setOnAction((event) -> {
@@ -102,9 +105,10 @@ public class MainWindow {
 				this.vm2.showComics();
 			}
 		});
-		
+	
 		this.removeComicButton.setOnAction((event) -> {
 			this.vm2.removeComic();
+			
 		});
 		
 	}
@@ -118,7 +122,7 @@ public class MainWindow {
 	    	Parent parent = loader.getRoot();
 	    	Scene scene = new Scene(parent);
 	    	Stage optionsWindow = new Stage();
-	    	optionsWindow.setTitle("");
+	    	optionsWindow.setTitle("Add Comic");
 	    	optionsWindow.setScene(scene);
 	    	optionsWindow.initModality(Modality.APPLICATION_MODAL);
 	    	OptionsWindow controller = (OptionsWindow) loader.getController();

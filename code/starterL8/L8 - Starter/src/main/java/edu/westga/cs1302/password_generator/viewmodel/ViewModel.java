@@ -96,14 +96,14 @@ public class ViewModel {
 		}
 	}
 	
-//	/**
-//	 * method meant to clear the previous items in the subTask listview and replace them with the CollectionsData
-//	 * items comics
-//	 * 
-//	 */
-//	public void showComics() {
-//		this.vm = new OptionsWindowViewModel();
-//		this.vm.showComics();
-//	}
+	/**
+	 * method meant to clear the previous items in the subTask listview and replace them with the CollectionsData
+	 * items comics
+	 * 
+	 */
+	public void showComics() {
+		this.vm = new OptionsWindowViewModel();
+		this.vm.showComics();
+	}
 }
 

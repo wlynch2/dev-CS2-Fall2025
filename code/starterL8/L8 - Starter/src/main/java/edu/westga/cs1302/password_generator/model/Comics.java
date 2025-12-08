@@ -19,14 +19,14 @@ public class Comics {
 	 * @param issueNumber int the issue number of the comic
 	 */
 	public Comics(String title, int issueNumber) {
-		if (title == null) {
+		if (title == null || title.isEmpty()) {
 			throw new IllegalArgumentException("title cannot be null");
 		}
 		
 		if (issueNumber <= 0) {
 			throw new IllegalArgumentException("issueNumber cannot be less than 0");
 		}
-		
+	
 		this.title = title;
 		this.issueNumber = issueNumber;
 	}

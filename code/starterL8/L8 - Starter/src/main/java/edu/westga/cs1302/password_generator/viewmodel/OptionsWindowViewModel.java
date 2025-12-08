@@ -125,7 +125,16 @@ public class OptionsWindowViewModel {
 	 * 
 	 */
 	public void removeComic() {
-		Comics comic = this.selectedComic.get();
-		this.listOfComicsProperty.remove(comic);
+		Comics comic = this.getSelectedComic().get();
+		
+		if (comic == null) {
+			throw new IllegalArgumentException("comic cannot be null");
+		}
+		
+		
+		this.getListOfComicsProperty().remove(comic);
+		
+		
+		
 	}
 }

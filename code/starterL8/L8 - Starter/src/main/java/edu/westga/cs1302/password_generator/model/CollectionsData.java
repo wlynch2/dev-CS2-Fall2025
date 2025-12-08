@@ -54,7 +54,6 @@ public class CollectionsData {
 		if (comic == null) {
 			throw new IllegalArgumentException("comic cannot be null");
 		}
-		
 		this.comicCollection.add(comic);
 	}
 	
