@@ -21,6 +21,7 @@ public class ViewModel {
 	private ObjectProperty<CollectionsData> selectedCollection;
 	private ListProperty<CollectionsData> collectionList;
 	private ListProperty<Comics> comicsList;
+	private OptionsWindowViewModel vm;
 	
 	/**
 	 * constructor for ViewModel initializes all the fields as simpleProperties
@@ -29,7 +30,7 @@ public class ViewModel {
 		this.collectionName = new SimpleStringProperty("");
 		this.selectedCollection = new SimpleObjectProperty<>();
 		this.collectionList = new SimpleListProperty<CollectionsData>(FXCollections.observableArrayList(new ArrayList<CollectionsData>()));
-		this.comicsList =  new SimpleListProperty<Comics>(FXCollections.observableArrayList(new ArrayList<Comics>()));
+		this.comicsList = new SimpleListProperty<Comics>(FXCollections.observableArrayList(new ArrayList<Comics>()));
 	}
 	
 	/** getter method to get the name of the object 
@@ -62,7 +63,7 @@ public class ViewModel {
 		return this.collectionList;
 	}
 	
-	public ListProperty<Comics> getComics(){
+	public ListProperty<Comics> getComicList(){
 		return this.comicsList;
 	}
 	
@@ -78,9 +79,7 @@ public class ViewModel {
 		this.collectionList.add(data);
 		
 	}
-	
 
-	
 	/** method used to remove the currently selected item from the list
 	 *  creates a CollectionsData object assigns the value of the selectedCollection
 	 *  ObjectProperty and removes that when the method is called
@@ -90,10 +89,21 @@ public class ViewModel {
 	 */
 	public void removeItem() {
 		CollectionsData data = this.selectedCollection.get();
+		
 		if (data != null) {
 			this.collectionList.remove(data);
+			this.comicsList.get().clear();
 		}
 	}
 	
+//	/**
+//	 * method meant to clear the previous items in the subTask listview and replace them with the CollectionsData
+//	 * items comics
+//	 * 
+//	 */
+//	public void showComics() {
+//		this.vm = new OptionsWindowViewModel();
+//		this.vm.showComics();
+//	}
 }
 

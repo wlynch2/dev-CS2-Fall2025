@@ -39,7 +39,7 @@ public class CollectionsData {
 	 * 
 	 * @return an arrayList of comics
 	 */
-	public ArrayList<Comics> getComicCollection(){
+	public ArrayList<Comics> getComicCollection() {
 		return this.comicCollection;
 	}
 	

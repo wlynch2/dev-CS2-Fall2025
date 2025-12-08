@@ -18,13 +18,12 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
-/** Codebehind for the MainWindow of the Application.
+/**Codebehind for the MainWindow of the Application.
  * 
  * @author CS 1302
  * @version Fall 2025
@@ -63,7 +62,6 @@ public class MainWindow {
 	private ViewModel vm;
 	private OptionsWindowViewModel vm2;
 	
-	
 	@FXML
 	void initialize() {
 		this.vm = new ViewModel();
@@ -73,8 +71,8 @@ public class MainWindow {
 		this.listOfCollections.setItems(this.vm.getCollectionsList());
 		this.vm.getSelectedItem().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		this.comicsListView.setItems(this.vm2.getListOfComicsProperty());
-		//this.vm2.getSelectedComic().bind(this.comicsListView.getSelectionModel().selectedItemProperty());
-		this.vm2.getSelectedComic().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
+		
+		this.vm2.getSelectedCollection().bind(this.listOfCollections.getSelectionModel().selectedItemProperty());
 		
 		this.collectionName.textProperty().addListener((observable, oldValue, newValue) -> {
 			this.addCollection.setVisible(!newValue.isEmpty());
@@ -90,28 +88,25 @@ public class MainWindow {
 		
 		this.removebuttonContext.setOnAction((event) -> {
 			this.vm.removeItem();
+		
 		});
 		
 		this.addComicButton.setOnAction((event) -> {
-			
-		});
-		
-		this.comicsWindow.setOnAction((event) -> {
-			
 			this.openOptionsWindow(event);
-			
 		});
 		
 		this.listOfCollections.setOnMouseClicked((event) -> {
+
 			CollectionsData selected = this.listOfCollections.getSelectionModel().getSelectedItem();
 			if (selected != null) {
 				this.vm2.showComics();
 			}
 		});
 		
-//		this.removeComicButton.setOnAction((event) -> {
-//			this.vm2.removeComic();
-//		});
+		this.removeComicButton.setOnAction((event) -> {
+			this.vm2.removeComic();
+		});
+		
 	}
 	
 	@FXML
